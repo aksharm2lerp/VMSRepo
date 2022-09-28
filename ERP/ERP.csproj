@@ -1,0 +1,207 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup Label="Globals">
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <UserSecretsId>aspnet-ERP-AE2969B3-75AD-4EA0-A236-44AF57519291</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Areas\Identity\Pages\**" />
+    <Compile Remove="Areas\SuperAdmin\Views\NewFolder\**" />
+    <Content Remove="Areas\Identity\Pages\**" />
+    <Content Remove="Areas\SuperAdmin\Views\NewFolder\**" />
+    <EmbeddedResource Remove="Areas\Identity\Pages\**" />
+    <EmbeddedResource Remove="Areas\SuperAdmin\Views\NewFolder\**" />
+    <None Remove="Areas\Identity\Pages\**" />
+    <None Remove="Areas\SuperAdmin\Views\NewFolder\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Data\ContextSeed.cs" />
+    <Compile Remove="Extensions\MvcControllerDiscovery.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Views\Account\Index.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Sample.pdf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AspNetCoreHero.ToastNotification" Version="1.1.0" />
+    <PackageReference Include="ClosedXML" Version="0.95.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.15" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.15">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
+    <PackageReference Include="Razor.Templating.Core" Version="1.4.0" />
+    <PackageReference Include="Select.HtmlToPdf.NetCore" Version="22.1.0" />
+    <PackageReference Include="Syncfusion.HtmlToPdfConverter.QtWebKit.Net.Core" Version="20.1.0.47" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\SuperAdmin\Data\" />
+    <Folder Include="Areas\Sales\Controllers\" />
+    <Folder Include="Areas\Sales\Data\" />
+    <Folder Include="Areas\Sales\Models\" />
+    <Folder Include="Areas\Sales\Views\" />
+    <Folder Include="Views\NewFolder\" />
+    <Folder Include="wwwroot\Files\" />
+    <Folder Include="wwwroot\VisitorScanData\" />
+    <Folder Include="wwwroot\VMS\" />
+    <Folder Include="wwwroot\QtBinariesDotNetCore\" />
+    <Folder Include="wwwroot\webcamjs\flash\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Areas\Admin\Views\Shared\_LayoutMaster.cshtml" />
+    <None Include="Areas\Admin\Views\Shared\_sidebar.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Business\Business.Entities\Business.Entities\Business.Entities.csproj" />
+    <ProjectReference Include="..\Business\Business.Implementation\Businessa.Service\Business.Service\Business.Service.csproj" />
+    <ProjectReference Include="..\Infrastructure\GridBlazor\GridBlazor.csproj" />
+    <ProjectReference Include="..\Infrastructure\GridMvc\GridMvc.csproj" />
+    <ProjectReference Include="..\Infrastructure\GridShared\GridShared.csproj" />
+    <ProjectReference Include="..\Infrastructure\JsonStore\Kinfo.JsonStore\Kinfo.JsonStore.csproj" />
+    <ProjectReference Include="..\Infrastructure\Util\Utils\Utils.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="QtBinariesWindows\icudt49.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="QtBinariesWindows\icuin49.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="QtBinariesWindows\icuuc49.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="QtBinariesWindows\imageformats\qdds.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="QtBinariesWindows\imageformats\qgif.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="QtBinariesWindows\imageformats\qicns.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="QtBinariesWindows\imageformats\qico.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="QtBinariesWindows\imageformats\qjp2.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="QtBinariesWindows\imageformats\qjpeg.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="QtBinariesWindows\imageformats\qmng.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="QtBinariesWindows\imageformats\qsvg.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="QtBinariesWindows\imageformats\qtga.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="QtBinariesWindows\imageformats\qtiff.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="QtBinariesWindows\imageformats\qwbmp.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="QtBinariesWindows\imageformats\qwebp.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="QtBinariesWindows\libEGL.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="QtBinariesWindows\libGLESv2.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="QtBinariesWindows\platforms\qminimal.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="QtBinariesWindows\platforms\qoffscreen.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="QtBinariesWindows\platforms\qwindows.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="QtBinariesWindows\Qt5Core.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="QtBinariesWindows\Qt5Gui.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="QtBinariesWindows\Qt5Multimedia.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="QtBinariesWindows\Qt5MultimediaWidgets.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="QtBinariesWindows\Qt5Network.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="QtBinariesWindows\Qt5OpenGL.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="QtBinariesWindows\Qt5Positioning.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="QtBinariesWindows\Qt5PrintSupport.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="QtBinariesWindows\Qt5Qml.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="QtBinariesWindows\Qt5Quick.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="QtBinariesWindows\Qt5Sensors.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="QtBinariesWindows\Qt5Sql.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="QtBinariesWindows\Qt5Svg.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="QtBinariesWindows\Qt5WebChannel.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="QtBinariesWindows\Qt5WebKit.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="QtBinariesWindows\Qt5WebKitWidgets.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="QtBinariesWindows\Qt5Widgets.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="QtBinariesWindows\Syncfusion.WebKitWrapper">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="QtBinariesWindows\zlib1.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

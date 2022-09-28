@@ -1,0 +1,147 @@
+﻿@using ERP.Controllers
+@{
+    string path = SettingsController.LOGOPATH;
+    bool isLogo = false;
+    if (path.IsNotStringNullOrEmpty())
+    {
+        isLogo = true;
+    }
+}
+<div class="sidebar-wrapper" data-simplebar="true"  ><!--style="background-color:#f1f1f1;" add this command in-line css-->
+    <div class="sidebar-header">
+        @if (isLogo)
+        {
+            <div>
+               @* <img src="@SettingsController.LOGOPATH" class="logo-icon" alt="logo icon">*@
+               @* <img src="~/companylogo/logo.png" class="logo-icon" alt="logo icon">*@
+                <img src="~/assets/images/icons/Srini_Link_logo.png" class="logo-icon" alt="Srini Link">
+            </div>
+        }
+        else
+        {
+            <div>
+                @*<img src="~/assets/images/icons/Srini_Link_logo.png" class="logo-icon" style="width:5%" alt="Srini Link">*@
+                <h4 class="logo-text">@SettingsController.COMPANYNAME</h4>
+            </div>
+        }
+        <div class="toggle-icon ms-auto">
+            <i class='bx bx-chip'></i>
+        </div>
+    </div>
+    <!--navigation-->
+    <ul class="metismenu" id="menu">
+
+        <li>
+            <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon">
+                    <i class='bx bxs-user'></i>
+                </div>
+                <div class="menu-title">Administrator</div>
+            </a>
+            <ul>
+                <!--Company-->
+                <li>
+                    <secure-content asp-area="SuperAdmin" asp-controller="Company" asp-action="Index">
+                        <a asp-area="SuperAdmin" asp-controller="Company" asp-action="Index"><i class="bx bx-right-arrow-alt"></i>Company</a>
+                    </secure-content>
+                </li>
+                <!--Company-->
+
+                <!--Role-->
+                <li>
+                    <secure-content asp-area="SuperAdmin" asp-controller="Role" asp-action="Index">
+                        <a asp-area="SuperAdmin" asp-controller="Role" asp-action="Index"><i class="bx bx-right-arrow-alt"></i>Role</a>
+                    </secure-content>
+                </li>
+                <!--Role-->
+
+                <!--Department-->
+                <li>
+                    <secure-content asp-area="SuperAdmin" asp-controller="Department" asp-action="Index">
+                        <a asp-area="SuperAdmin" asp-controller="Department" asp-action="Index"><i class="bx bx-right-arrow-alt"></i>Department</a>
+                    </secure-content>
+                </li>
+                <!--Department-->
+
+                <!--Users-->
+                 <li>
+                    <secure-content asp-area="Admin" asp-controller="Users" asp-action="Index">
+                        <a asp-area="Admin" asp-controller="Users" asp-action="Index"><i class="bx bx-right-arrow-alt"></i>Users</a>
+                    </secure-content>
+                </li>
+                <!--Users--> 
+                 
+                <!--User Permissions--> 
+                <li>
+                    <secure-content asp-area="Admin" asp-controller="" asp-action="">
+                        <a asp-area="Admin" asp-controller="" asp-action=""><i class="bx bx-right-arrow-alt"></i>User Permissions</a>
+                    </secure-content>
+                </li>
+                <!--User Permissions--> 
+
+                <!--Configuration-->              
+                <li>
+                    <secure-content asp-area="Admin" asp-controller="" asp-action="">
+                        <a asp-area="Admin" asp-controller="" asp-action=""><i class="bx bx-right-arrow-alt"></i>Configuration</a>
+                    </secure-content>
+                </li>
+                <!--Configuration--> 
+
+                <!--Company License--> 
+                <li>
+                    <secure-content asp-area="Admin" asp-controller="" asp-action="">
+                        <a asp-area="Admin" asp-controller="" asp-action=""><i class="bx bx-right-arrow-alt"></i>Company License</a>
+                    </secure-content>
+                </li>
+                <!--Company License-->
+               
+            </ul>
+        </li>
+
+        <li>
+            <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon">
+                    <i class='bx bx-user'></i>
+                </div>
+                <div class="menu-title">Visitor</div>
+            </a>
+            <ul>
+                <!--<li>
+                    <secure-content asp-area="Admin" asp-controller="RoleManage" asp-action="Index">
+                        <a asp-area="Admin" asp-controller="RoleManage" asp-action="Index"><i class="bx bx-right-arrow-alt"></i>Role Permissions</a>
+                    </secure-content>
+                </li>
+                <li>
+                    <secure-content asp-area="Admin" asp-controller="Users" asp-action="Index">
+                        <a asp-area="Admin" asp-controller="Users" asp-action="Index"><i class="bx bx-right-arrow-alt"></i>Users</a>
+                    </secure-content>
+                </li>
+                <li>
+                    <secure-content asp-area="Admin" asp-controller="Users" asp-action="Create">
+                        <a asp-area="Admin" asp-controller="Users" asp-action="Create"><i class="bx bx-right-arrow-alt"></i>Add User</a>
+                    </secure-content>
+                </li>-->
+
+                <!--Visitor requests list-->
+                <li>
+                    <secure-content asp-area="Admin" asp-controller="VisitorRequests" asp-action="Index">
+                        <a asp-area="Admin" asp-controller="VisitorRequests" asp-action="Index"><i class="bx bx-right-arrow-alt"></i>Visitor requests list</a>
+                    </secure-content>
+                </li>
+                <!--Visitor requests list-->
+
+                <!--Direct visitor entry-->
+                <li>
+                    <secure-content asp-area="Admin" asp-controller="VisitorRequests" asp-action="Create">
+                        <a asp-area="Admin" asp-controller="VisitorRequests" asp-action="Create"><i class="bx bx-right-arrow-alt"></i>Direct visitor entry</a>
+                    </secure-content>
+                </li>
+                <!--Direct visitor entry-->
+            </ul>
+        </li>
+
+
+
+    </ul>
+    <!--end navigation-->
+</div>

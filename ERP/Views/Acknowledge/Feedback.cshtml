@@ -1,0 +1,106 @@
+﻿@model Business.Entities.VisitorFeedbackMetaData
+
+@{
+    ViewData["Title"] = "Feedback";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+<style media="screen">
+.rating {
+display: flex;
+flex-direction: row-reverse;
+justify-content: left;
+}
+
+
+.rating > input{ display:none;}
+
+.rating > label {
+position: relative;
+width: 0.8em;
+font-size: 5vw;
+color: #FFD700;
+cursor: pointer;
+}
+
+.rating > label::before{
+content: "\2605";
+position: absolute;
+opacity: 0;
+}
+
+.rating > label:hover:before,
+.rating > label:hover ~ label:before {
+opacity: 1 !important;
+}
+
+.rating > input:checked ~ label:before{
+opacity:1;
+}
+
+.rating:hover > input:checked ~ label:before{ opacity: 0.4; }
+  </style>
+<div class="container margin-top-80">
+    <div class="row">
+        <div class="col-sm-9 col-md-7 col-lg-10 mx-auto">
+            <div class="card border-0 shadow rounded-3 my-5">
+                <div class="card-body p-4 p-sm-5">
+                    <h5 class="card-title text-center mb-5 fw-light fs-5"><b>Feedback Form</b></h5>
+                    <div class="row center">
+                        <div class="col-md-12">
+                            <form method="post" enctype="multipart/form-data" asp-controller="Acknowledge" asp-action="Feedback">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <input type="hidden" asp-for="VisitorFeedbackID" class="form-control" />
+                                <input type="hidden" asp-for="VisitorMeetingRequestID" class="form-control" />
+                                @{
+                                    int c = 0;
+                                }
+                                @foreach (var item in Model.feedbackQuestions)
+                                {
+                                    if (c < 3)
+                                    {
+                                        var nm = "FeedbackQuestion" + (c + 1);
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <div class="form-group">
+                                                    <label for="@item.FeedbackQuestionID" class="control-label">@item.FeedbackQuestionText</label><br />
+                                                    <input id="@item.FeedbackQuestionID" type="radio" name="@nm" value="Yes" /> Yes
+                                                    <input id="@item.FeedbackQuestionID" type="radio" name="@nm" value="No" /> No
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="row">
+                                            <div class="col-md-10">
+                                                <div class="form-group">
+                                                    <label for="@item.FeedbackQuestionID" class="control-label">@item.FeedbackQuestionText</label>
+                                                    <div class="rating">
+
+                                                        <input type="radio" name="rating" value="5" id="1_@item.FeedbackQuestionID"><label for="1_@item.FeedbackQuestionID">☆</label>
+                                                        <input type="radio" name="rating" value="4" id="2_@item.FeedbackQuestionID"><label for="2_@item.FeedbackQuestionID">☆</label>
+                                                        <input type="radio" name="rating" value="3" id="3_@item.FeedbackQuestionID"><label for="3_@item.FeedbackQuestionID">☆</label>
+                                                        <input type="radio" name="rating" value="2" id="4_@item.FeedbackQuestionID"><label for="4_@item.FeedbackQuestionID">☆</label>
+                                                        <input type="radio" name="rating" value="1" id="5_@item.FeedbackQuestionID"><label for="5_@item.FeedbackQuestionID">☆</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                    c++;
+                                }
+                                <br />
+                                <div class="form-flating">
+                                    <button class="btn btn-primary btn-login text-uppercase fw-bold" type="submit" onclick="getRatingValue(this)">
+                                        Submit
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

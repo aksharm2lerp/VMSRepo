@@ -1,0 +1,27 @@
+﻿using Business.Entities;
+using Business.Entities.Master;
+using Business.Entities.User;
+using Business.Entities.Department;
+using Business.SQL;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
+
+namespace Business.Interface
+{
+    public interface IMasterService
+    {
+        PagedDataTable<IdentityProofTypeMetaData> GetIdentityProofTypeAsync();
+
+        PagedDataTable<VehicleTypeMasterMetaData> GetVehicleTypeAsync();
+
+        PagedDataTable<ZipCodeMaster> GetZipCodeAsync(string search);
+
+        PagedDataTable<FeedbackQuestionMasterMetaData> GetFeedbackQuestions();
+        PagedDataTable<IndustryTypeMaster> GetIndustryTypeMasterAsync();
+        PagedDataTable<BusinessTypeMaster> GetBusinessTypeMasterAsync();
+        PagedDataTable<UserRoleMaster> GetUserRoleMasterAsync();
+        PagedDataTable<DepartmentGroup> GetDepartmentGroupsMasterAsync();
+
+    }
+}

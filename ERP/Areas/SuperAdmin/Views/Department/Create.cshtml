@@ -1,0 +1,83 @@
+﻿@model Business.Entities.Department.Department
+@{
+    ViewData["Title"] = "Department Create...!";
+    Layout = "~/Views/Shared/_LayoutMaster.cshtml";
+}
+
+<div class="container pt-5">
+    <div class="card-body">
+        <div class="card col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <div class="page-breadcrumb align-items-center border-bottom">
+                <div class="p-2">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb mb-0 p-0">
+                            <li class="breadcrumb-item">
+                                <a asp-controller="Department" asp-action="Index" asp-area="SuperAdmin"><i class="bx bx-home-alt"></i></a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page"><a asp-controller="Department" asp-action="Index" asp-area="SuperAdmin">Department</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Create</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+            <div class="row">
+                <form method="post" asp-action="Register" asp-controller="Department" asp-area="SuperAdmin" class="row g-3 needs-validation" novalidate enctype="multipart/form-data">
+                    <div class="row">
+
+
+
+                        <div class="row mb-3">
+                            <input type="hidden" asp-for="DepartmentID" />
+                            <label for="" class="col-sm-3 col-form-label text-end">Department Name</label>
+                            <div class="col-sm-9">
+                                <input type="text" required="" class="form-control" id="DepartmentName" name="DepartmentName" asp-for="DepartmentName" placeholder="">
+                                <span asp-validation-for="DepartmentName" class="text-danger"></span>
+                            </div>
+                        </div>
+
+
+                        <div class="row mb-3">
+                            <label for="" class="col-sm-3 col-form-label text-end">Department Description</label>
+                            <div class="col-sm-9">
+                                @*<input type="text" required="" class="form-control" id="Description" name="Description" asp-for="Description" placeholder="">*@
+                                <textarea required="" class="form-control" rows="4" id="Description" name="Description" asp-for="Description" placeholder=""></textarea> @*form="usrform"*@
+                                <span asp-validation-for="Description" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="" class="col-sm-3 col-form-label text-end">Department Group</label>
+                            <div class="col-sm-9">
+                                @*<input type="text" required="" class="form-control" id="DepartmentName" name="DepartmentName" asp-for="DepartmentName" placeholder="">
+                                <span asp-validation-for="DepartmentName" class="text-danger"></span>*@
+                                <select asp-for="DepartmentGroupID" asp-items="ViewBag.DepartmentGroupText" class="form-control">
+                                    <option value="">Select Department Group...</option>
+                                </select>
+                                <a asp-controller="Department" asp-action="AddDepartmentGroup" asp-area="SuperAdmin"><i class="bx bx-plus-medical">Add</i></a>
+                            </div>
+                            @*<div class="col-sm-1">
+                                <a asp-controller="Department" asp-action="AddGroup" asp-area="SuperAdmin"><i class="bx bx-plus-medical">Add</i></a>
+                            </div>*@
+                            <span asp-validation-for="DepartmentGroupID" class="text-danger"></span>
+                        </div>
+                         
+                        <div class="row mb-3">
+                            <label for="" class="col-sm-3 col-form-label text-end">Is Active</label>
+                            <div class="col-sm-9">
+                                @Html.CheckBoxFor(s => s.IsActive)
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label class="col-sm-3 col-form-label"></label>
+                        <div class="col-sm-9">
+                            <button type="submit" class="btn btn-primary btn-info px-5">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

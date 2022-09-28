@@ -1,0 +1,17 @@
+D:\AksharItSolution\VMS\Infrastructure\JsonStore\Kinfo.JsonStore\bin\Release\net5.0\Kinfo.JsonStore.deps.json
+D:\AksharItSolution\VMS\Infrastructure\JsonStore\Kinfo.JsonStore\bin\Release\net5.0\Kinfo.JsonStore.dll
+D:\AksharItSolution\VMS\Infrastructure\JsonStore\Kinfo.JsonStore\bin\Release\net5.0\ref\Kinfo.JsonStore.dll
+D:\AksharItSolution\VMS\Infrastructure\JsonStore\Kinfo.JsonStore\bin\Release\net5.0\Kinfo.JsonStore.pdb
+D:\AksharItSolution\VMS\Infrastructure\JsonStore\Kinfo.JsonStore\bin\Release\net5.0\Business.Entities.dll
+D:\AksharItSolution\VMS\Infrastructure\JsonStore\Kinfo.JsonStore\bin\Release\net5.0\Business.SQL.dll
+D:\AksharItSolution\VMS\Infrastructure\JsonStore\Kinfo.JsonStore\bin\Release\net5.0\Business.Entities.pdb
+D:\AksharItSolution\VMS\Infrastructure\JsonStore\Kinfo.JsonStore\bin\Release\net5.0\Business.SQL.pdb
+D:\AksharItSolution\VMS\Infrastructure\JsonStore\Kinfo.JsonStore\obj\Release\net5.0\Kinfo.JsonStore.csproj.AssemblyReference.cache
+D:\AksharItSolution\VMS\Infrastructure\JsonStore\Kinfo.JsonStore\obj\Release\net5.0\Kinfo.JsonStore.GeneratedMSBuildEditorConfig.editorconfig
+D:\AksharItSolution\VMS\Infrastructure\JsonStore\Kinfo.JsonStore\obj\Release\net5.0\Kinfo.JsonStore.AssemblyInfoInputs.cache
+D:\AksharItSolution\VMS\Infrastructure\JsonStore\Kinfo.JsonStore\obj\Release\net5.0\Kinfo.JsonStore.AssemblyInfo.cs
+D:\AksharItSolution\VMS\Infrastructure\JsonStore\Kinfo.JsonStore\obj\Release\net5.0\Kinfo.JsonStore.csproj.CoreCompileInputs.cache
+D:\AksharItSolution\VMS\Infrastructure\JsonStore\Kinfo.JsonStore\obj\Release\net5.0\Kinfo.JsonStore.csproj.CopyComplete
+D:\AksharItSolution\VMS\Infrastructure\JsonStore\Kinfo.JsonStore\obj\Release\net5.0\Kinfo.JsonStore.dll
+D:\AksharItSolution\VMS\Infrastructure\JsonStore\Kinfo.JsonStore\obj\Release\net5.0\ref\Kinfo.JsonStore.dll
+D:\AksharItSolution\VMS\Infrastructure\JsonStore\Kinfo.JsonStore\obj\Release\net5.0\Kinfo.JsonStore.pdb

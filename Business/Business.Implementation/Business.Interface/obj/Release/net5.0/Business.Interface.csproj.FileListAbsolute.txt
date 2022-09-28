@@ -1,0 +1,17 @@
+D:\AksharItSolution\VMS\Business\Business.Implementation\Business.Interface\bin\Release\net5.0\Business.Interface.deps.json
+D:\AksharItSolution\VMS\Business\Business.Implementation\Business.Interface\bin\Release\net5.0\Business.Interface.dll
+D:\AksharItSolution\VMS\Business\Business.Implementation\Business.Interface\bin\Release\net5.0\ref\Business.Interface.dll
+D:\AksharItSolution\VMS\Business\Business.Implementation\Business.Interface\bin\Release\net5.0\Business.Interface.pdb
+D:\AksharItSolution\VMS\Business\Business.Implementation\Business.Interface\bin\Release\net5.0\Business.Entities.dll
+D:\AksharItSolution\VMS\Business\Business.Implementation\Business.Interface\bin\Release\net5.0\Business.SQL.dll
+D:\AksharItSolution\VMS\Business\Business.Implementation\Business.Interface\bin\Release\net5.0\Business.Entities.pdb
+D:\AksharItSolution\VMS\Business\Business.Implementation\Business.Interface\bin\Release\net5.0\Business.SQL.pdb
+D:\AksharItSolution\VMS\Business\Business.Implementation\Business.Interface\obj\Release\net5.0\Business.Interface.csproj.AssemblyReference.cache
+D:\AksharItSolution\VMS\Business\Business.Implementation\Business.Interface\obj\Release\net5.0\Business.Interface.GeneratedMSBuildEditorConfig.editorconfig
+D:\AksharItSolution\VMS\Business\Business.Implementation\Business.Interface\obj\Release\net5.0\Business.Interface.AssemblyInfoInputs.cache
+D:\AksharItSolution\VMS\Business\Business.Implementation\Business.Interface\obj\Release\net5.0\Business.Interface.AssemblyInfo.cs
+D:\AksharItSolution\VMS\Business\Business.Implementation\Business.Interface\obj\Release\net5.0\Business.Interface.csproj.CoreCompileInputs.cache
+D:\AksharItSolution\VMS\Business\Business.Implementation\Business.Interface\obj\Release\net5.0\Business.Interface.csproj.CopyComplete
+D:\AksharItSolution\VMS\Business\Business.Implementation\Business.Interface\obj\Release\net5.0\Business.Interface.dll
+D:\AksharItSolution\VMS\Business\Business.Implementation\Business.Interface\obj\Release\net5.0\ref\Business.Interface.dll
+D:\AksharItSolution\VMS\Business\Business.Implementation\Business.Interface\obj\Release\net5.0\Business.Interface.pdb

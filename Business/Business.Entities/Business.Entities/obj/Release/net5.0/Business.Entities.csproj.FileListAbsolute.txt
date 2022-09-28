@@ -1,0 +1,15 @@
+D:\AksharItSolution\VMS\Business\Business.Entities\Business.Entities\bin\Release\net5.0\Business.Entities.deps.json
+D:\AksharItSolution\VMS\Business\Business.Entities\Business.Entities\bin\Release\net5.0\Business.Entities.dll
+D:\AksharItSolution\VMS\Business\Business.Entities\Business.Entities\bin\Release\net5.0\ref\Business.Entities.dll
+D:\AksharItSolution\VMS\Business\Business.Entities\Business.Entities\bin\Release\net5.0\Business.Entities.pdb
+D:\AksharItSolution\VMS\Business\Business.Entities\Business.Entities\bin\Release\net5.0\Business.SQL.dll
+D:\AksharItSolution\VMS\Business\Business.Entities\Business.Entities\bin\Release\net5.0\Business.SQL.pdb
+D:\AksharItSolution\VMS\Business\Business.Entities\Business.Entities\obj\Release\net5.0\Business.Entities.csproj.AssemblyReference.cache
+D:\AksharItSolution\VMS\Business\Business.Entities\Business.Entities\obj\Release\net5.0\Business.Entities.GeneratedMSBuildEditorConfig.editorconfig
+D:\AksharItSolution\VMS\Business\Business.Entities\Business.Entities\obj\Release\net5.0\Business.Entities.AssemblyInfoInputs.cache
+D:\AksharItSolution\VMS\Business\Business.Entities\Business.Entities\obj\Release\net5.0\Business.Entities.AssemblyInfo.cs
+D:\AksharItSolution\VMS\Business\Business.Entities\Business.Entities\obj\Release\net5.0\Business.Entities.csproj.CoreCompileInputs.cache
+D:\AksharItSolution\VMS\Business\Business.Entities\Business.Entities\obj\Release\net5.0\Business.Entities.csproj.CopyComplete
+D:\AksharItSolution\VMS\Business\Business.Entities\Business.Entities\obj\Release\net5.0\Business.Entities.dll
+D:\AksharItSolution\VMS\Business\Business.Entities\Business.Entities\obj\Release\net5.0\ref\Business.Entities.dll
+D:\AksharItSolution\VMS\Business\Business.Entities\Business.Entities\obj\Release\net5.0\Business.Entities.pdb

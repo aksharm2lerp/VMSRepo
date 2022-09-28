@@ -1,0 +1,103 @@
+﻿@model CompanyMasterMetadata
+@*@{ ViewData["Title"] = "Company";
+    Layout = "~/Views/Shared/_sidebar.cshtml"; }*@
+
+@{
+    ViewData["Title"] = "New Company Entery Form...!";
+    Layout = "~/Views/Shared/_LayoutMaster.cshtml";
+    //Layout = "~/Areas/Admin/Views/Shared/_LayoutMaster.cshtml";
+}
+
+<div class="page-breadcrumb d-none d-sm-flex align-items-center pt-5 pb-3 border-bottom">
+    <div class="ps-3">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0 p-0">
+                <li class="breadcrumb-item">
+                    <a asp-controller="Company" asp-action="Index" asp-area="SuperAdmin"><i class="bx bx-home-alt"></i></a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page"><a asp-controller="Company" asp-action="Index" asp-area="SuperAdmin">Companies</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Edit</li>
+            </ol>
+        </nav>               
+    </div>
+</div>
+<div class="row">
+    <form method="post" asp-action="Register" asp-controller="Company" asp-area="SuperAdmin" class="row g-3 needs-validation" novalidate enctype="multipart/form-data">
+        <div class="row">
+            <div class="">
+                @*  <div class="card-title d-flex align-items-center">
+
+                <h5 class="mb-0 text-info ">Register Company</h5>
+                </div>*@
+
+                <div class="row mb-3">
+                    <input type="hidden" asp-for="CompanyID" />
+                    <input type="hidden" asdp-for="CompanyLogoID" />
+                    <label for="" class="col-sm-3 col-form-label text-end">Company Name</label>
+                    <div class="col-sm-9">
+                        <input type="text" required="" class="form-control" id="CompanyName" name="CompanyName" asp-for="CompanyName" placeholder="">
+                        <div id="CompanyNameFeedback" class="invalid-feedback">Please enter company name.</div>
+                    </div>
+                </div>
+                    
+
+                <div class="row mb-3">
+                    <label for="" class="col-sm-3 col-form-label text-end">Group Name</label>
+                    <div class="col-sm-9">
+                        <input type="text" required="" class="form-control" id="CompanyGroupName" name="CompanyGroupName" asp-for="CompanyGroupName" placeholder="">
+                        <span asp-validation-for="CompanyGroupName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="" class="col-sm-3 col-form-label text-end">Unit No./Name</label>
+                    <div class="col-sm-9">
+                        <input type="text" required="" class="form-control" id="UnitName" name="UnitName" asp-for="UnitName" placeholder="">
+                        <span asp-validation-for="UnitName" class="text-danger"></span>
+                    </div>
+                </div>  
+                <div class="row mb-3">
+                        <label asp-for="IndustryTypeID" class="col-sm-3 col-form-label text-end">Industry Type</label>
+                        <div class="col-sm-9">
+                            <select asp-for="IndustryTypeID" asp-items="ViewBag.IndustryTypeText" class="form-control">
+                                <option value="">Select Industry Type...</option>
+                            </select>
+                            <span asp-validation-for="IndustryTypeID" class="text-danger"></span>
+                        </div>
+                </div>
+                 <div class="row mb-3">
+                        <label asp-for="BusinessTypeID" class="col-sm-3 col-form-label text-end">Business Type</label>
+                        <div class="col-sm-9">
+                            <select asp-for="BusinessTypeID" asp-items="ViewBag.BusinessTypeText" class="form-control">
+                                <option value="">Select Business Type...</option>
+                            </select>
+                            <span asp-validation-for="BusinessTypeID" class="text-danger"></span>
+                        </div>
+                </div>
+              
+
+            </div>
+            <div class="row mb-3">
+                <label for="" class="col-sm-3 col-form-label text-end">Company Logo</label>
+                <div class="col-sm-9">
+                    <input class="form-control" asp-for="ImageFile" accept="image/*" />
+                    <span asp-validation-for="ImageFile" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="" class="col-sm-3 col-form-label text-end">Is Active</label>
+                <div class="col-sm-9">
+
+                    @Html.CheckBoxFor(s => s.IsActive)
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-3 col-form-label"></label>
+                <div class="col-sm-9">
+                    <button type="submit" class="btn btn-primary btn-info px-5">Submit</button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+</div>
+

@@ -1,0 +1,12 @@
+D:\AksharItSolution\VMS\Business\Business.SQL\Business.SQL\bin\Release\net5.0\Business.SQL.deps.json
+D:\AksharItSolution\VMS\Business\Business.SQL\Business.SQL\bin\Release\net5.0\Business.SQL.dll
+D:\AksharItSolution\VMS\Business\Business.SQL\Business.SQL\bin\Release\net5.0\ref\Business.SQL.dll
+D:\AksharItSolution\VMS\Business\Business.SQL\Business.SQL\bin\Release\net5.0\Business.SQL.pdb
+D:\AksharItSolution\VMS\Business\Business.SQL\Business.SQL\obj\Release\net5.0\Business.SQL.csproj.AssemblyReference.cache
+D:\AksharItSolution\VMS\Business\Business.SQL\Business.SQL\obj\Release\net5.0\Business.SQL.GeneratedMSBuildEditorConfig.editorconfig
+D:\AksharItSolution\VMS\Business\Business.SQL\Business.SQL\obj\Release\net5.0\Business.SQL.AssemblyInfoInputs.cache
+D:\AksharItSolution\VMS\Business\Business.SQL\Business.SQL\obj\Release\net5.0\Business.SQL.AssemblyInfo.cs
+D:\AksharItSolution\VMS\Business\Business.SQL\Business.SQL\obj\Release\net5.0\Business.SQL.csproj.CoreCompileInputs.cache
+D:\AksharItSolution\VMS\Business\Business.SQL\Business.SQL\obj\Release\net5.0\Business.SQL.dll
+D:\AksharItSolution\VMS\Business\Business.SQL\Business.SQL\obj\Release\net5.0\ref\Business.SQL.dll
+D:\AksharItSolution\VMS\Business\Business.SQL\Business.SQL\obj\Release\net5.0\Business.SQL.pdb

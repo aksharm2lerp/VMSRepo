@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "8NzRLx+Mw5Xe8f5VtcpUZY489DsJ7OJ95TZIa7KCoZo3OP5CE+/3d2i+46lnEoZHJiy4gdwOa/WuNKfxbQ0wzg==",
+  "success": true,
+  "projectFilePath": "C:\\Projects\\VMS\\Infrastructure\\Util\\Utils\\Utils.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\5.0.0\\microsoft.aspnetcore.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\5.0.0\\microsoft.windowsdesktop.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.netcore.app.ref\\5.0.0\\microsoft.netcore.app.ref.5.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

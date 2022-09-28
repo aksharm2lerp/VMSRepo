@@ -1,0 +1,10 @@
+D:\AksharItSolution\VMS\Infrastructure\GridShared\bin\Release\netstandard2.1\GridShared.deps.json
+D:\AksharItSolution\VMS\Infrastructure\GridShared\bin\Release\netstandard2.1\GridShared.dll
+D:\AksharItSolution\VMS\Infrastructure\GridShared\bin\Release\netstandard2.1\GridShared.pdb
+D:\AksharItSolution\VMS\Infrastructure\GridShared\obj\Release\netstandard2.1\GridShared.csproj.AssemblyReference.cache
+D:\AksharItSolution\VMS\Infrastructure\GridShared\obj\Release\netstandard2.1\GridShared.GeneratedMSBuildEditorConfig.editorconfig
+D:\AksharItSolution\VMS\Infrastructure\GridShared\obj\Release\netstandard2.1\GridShared.AssemblyInfoInputs.cache
+D:\AksharItSolution\VMS\Infrastructure\GridShared\obj\Release\netstandard2.1\GridShared.AssemblyInfo.cs
+D:\AksharItSolution\VMS\Infrastructure\GridShared\obj\Release\netstandard2.1\GridShared.csproj.CoreCompileInputs.cache
+D:\AksharItSolution\VMS\Infrastructure\GridShared\obj\Release\netstandard2.1\GridShared.dll
+D:\AksharItSolution\VMS\Infrastructure\GridShared\obj\Release\netstandard2.1\GridShared.pdb
