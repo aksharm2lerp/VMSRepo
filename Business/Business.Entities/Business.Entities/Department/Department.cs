@@ -20,24 +20,18 @@ namespace Business.Entities.Department
         [Required(ErrorMessage = "Please Enter the Department Description")]
         public string Description { get; set; }
 
-        [Required(ErrorMessage = "Please Enter the Department Group")]
+        [Required(ErrorMessage = "Please Select the Department Group Name")]
         public string DepartmentGroupText { get; set; }
 
-        [Required(ErrorMessage = "Please Enter the Department Group ID")]
+        [Required(ErrorMessage = "Please Select the Department Group ID")]
         public int DepartmentGroupID { get; set; }
 
         [Required(ErrorMessage = "Please Select the Check Box")]
-        public Boolean IsActive { get; set; }
-
-        public int CreatedBy { get; set; }
-
-        public DateTime CreatedDate { get; set; }
-
-        public int ModifiedBy { get; set; }
-
-        public DateTime ModifiedDate { get; set; }
+        public bool IsActive { get; set; } = true;
 
         public int CreatedOrModifiedBy { get; set; }
+         
+
 
        
     }

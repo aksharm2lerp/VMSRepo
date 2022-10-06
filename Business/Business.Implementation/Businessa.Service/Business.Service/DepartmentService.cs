@@ -66,5 +66,79 @@ namespace Business.Service
             }
         }
 
+
+        public async Task<int> CreateAsync(Department department)
+        {
+            try
+            {
+                SqlParameter[] param = {
+                new SqlParameter("@DepartmentID", department.DepartmentID)
+                ,new SqlParameter("@DepartmentName", department.DepartmentName)
+                ,new SqlParameter("@Description", department.Description)
+                ,new SqlParameter("@DepartmentGroupID", department.DepartmentGroupID)
+                ,new SqlParameter("@IsActive", department.IsActive)
+                ,new SqlParameter("@CreatedOrModifiedBy", department.CreatedOrModifiedBy)
+                };
+
+                var obj = await SqlHelper.ExecuteScalarAsync(connection, CommandType.StoredProcedure, "Usp_IU_DepartmentMaster", param);
+
+                return obj != null ? Convert.ToInt32(obj) : 0;
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public async Task<Department> GetDepartmentAsync(string departmentID)
+        {
+            Department result = null;
+            try
+            {
+                SqlParameter[] param = { new SqlParameter("@DepartmentID", departmentID) };
+                DataSet ds = await SqlHelper.ExecuteDatasetAsync(connection, CommandType.StoredProcedure, "Usp_Get_DepartmentMaster", param);
+                if (ds != null)
+                {
+                    if (ds.Tables.Count > 0)
+                    {
+                        if (ds.Tables[0].Rows.Count > 0)
+                        {
+                            DataRow dr = ds.Tables[0].Rows[0];
+                            result = dr.ToPagedDataTableList<Department>();
+                        }
+                    }
+                }
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public async Task<int> CreateOrUpdateDepartmentAsync(Department department)
+        {
+            try
+            {
+                SqlParameter[] param = {
+                new SqlParameter("@DepartmentID", department.DepartmentID)
+                ,new SqlParameter("@DepartmentName", department.DepartmentName)
+                ,new SqlParameter("@Description", department.Description)
+                ,new SqlParameter("@DepartmentGroupID", department.DepartmentGroupID)
+                ,new SqlParameter("@IsActive", department.IsActive)
+                ,new SqlParameter("@CreatedOrModifiedBy", department.CreatedOrModifiedBy)
+                };
+
+                var obj = await SqlHelper.ExecuteScalarAsync(connection, CommandType.StoredProcedure, "Usp_IU_DepartmentMaster", param);
+
+                return obj != null ? Convert.ToInt32(obj) : 0;
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

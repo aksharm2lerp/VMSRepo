@@ -2,6 +2,7 @@
 using Business.Entities.Master;
 using Business.Entities.User;
 using Business.Entities.Department;
+using Business.Entities.Designation;
 using Business.SQL;
 using System.Collections.Generic;
 using System.Threading;
@@ -22,6 +23,6 @@ namespace Business.Interface
         PagedDataTable<BusinessTypeMaster> GetBusinessTypeMasterAsync();
         PagedDataTable<UserRoleMaster> GetUserRoleMasterAsync();
         PagedDataTable<DepartmentGroup> GetDepartmentGroupsMasterAsync();
-
+        PagedDataTable<DesignationGroup> GetDesignationGroupMasterAsync();
     }
 }
