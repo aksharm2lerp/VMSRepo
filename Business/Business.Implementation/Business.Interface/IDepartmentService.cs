@@ -12,5 +12,8 @@ namespace Business.Interface
     {
         Task<PagedDataTable<Department>> GetAllDepartmentAsync(int pageNo , int pageSize, string searchString = "", string orderBy = "DepartmentID", string sortBy = "ASC");
 
+        Task<int> CreateAsync(Department department);
+        Task<Department> GetDepartmentAsync(string departmentID);
+        Task<int> CreateOrUpdateDepartmentAsync(Department departmet);
     }
 }
