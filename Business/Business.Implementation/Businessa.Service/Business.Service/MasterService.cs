@@ -1,5 +1,6 @@
 ﻿using Business.Entities;
 using Business.Entities.Department;
+using Business.Entities.Designation;
 using Business.Entities.Master;
 using Business.Entities.User;
 using Business.Interface;
@@ -298,6 +299,42 @@ namespace Business.Service
                     }
                     lst = table.ToPagedDataTableList<DepartmentGroup>
                        (1, 20, totalItemCount, null, "DepartmentGroupText", "ASC");
+                }
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                if (table != null)
+                    table.Dispose();
+            }
+            return lst;
+        }
+
+        public PagedDataTable<DesignationGroup> GetDesignationGroupMasterAsync()
+        {
+            DataTable table = new DataTable();
+            int totalItemCount = 0;
+            PagedDataTable<DesignationGroup> lst = new PagedDataTable<DesignationGroup>();
+            try
+            {
+                using (DataSet ds = SqlHelper.ExecuteDataset(connection, CommandType.StoredProcedure, "Usp_GetAll_DesignationGroupMaster"))
+                {
+                    if (ds.Tables.Count > 0)
+                    {
+                        table = ds.Tables[0];
+                        if (table.Rows.Count > 0)
+                        {
+                            if (table.ContainColumn("TotalCount"))
+                                totalItemCount = Convert.ToInt32(table.Rows[0]["TotalCount"]);
+                            else
+                                totalItemCount = table.Rows.Count;
+                        }
+                    }
+                    lst = table.ToPagedDataTableList<DesignationGroup>
+                       (1, 20, totalItemCount, null, "DesignationGroupText", "ASC");
                 }
             }
             catch
