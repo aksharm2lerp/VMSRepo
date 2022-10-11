@@ -1,0 +1,71 @@
+﻿@model Business.Entities.PartyType.PartyType;
+@{
+    ViewData["Title"] = "Department Create...!";
+    Layout = "~/Views/Shared/_LayoutMaster.cshtml";
+}
+
+<div class="container pt-5">
+    <div class="card-body">
+        <div class="card col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <div class="page-breadcrumb align-items-center border-bottom">
+                <div class="p-2">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb mb-0 p-0">
+                            <li class="breadcrumb-item">
+                                <a asp-controller="PartyType" asp-action="Index" asp-area="SuperAdmin"><i class="bx bx-home-alt"></i></a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page"><a asp-controller="PartyType" asp-action="Index" asp-area="SuperAdmin">Party Type</a></li>
+                            @*<li class="breadcrumb-item active" aria-current="page">Create</li>*@
+                            @if (Model != null && Model.PartyTypeID > 0)
+                            {
+                                <li class="breadcrumb-item active" aria-current="page">Update Party Type</li>
+                            }
+                            else
+                            {
+                                <li class="breadcrumb-item active" aria-current="page">Add new Party Type</li>
+                            }
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+            <div class="row">
+                <form method="post" asp-action="PratyTypeRegister" asp-controller="PartyType" asp-area="SuperAdmin" class="row g-3 needs-validation" novalidate enctype="multipart/form-data">
+                    <div class="row">
+
+                        <div class="row mb-3">
+                            <input type="hidden" asp-for="PartyTypeID" />
+                            <label for="" class="col-sm-3 col-form-label text-end">Party Type Name</label>
+                            <div class="col-sm-9">
+                                <input type="text" required="" class="form-control" id="PartyTypeText" name="PartyTypeText" asp-for="PartyTypeText" placeholder="">
+                                <span asp-validation-for="PartyTypeText" class="text-danger"></span>
+                            </div>
+                        </div>
+
+
+                        <div class="row mb-3">
+                            <label for="" class="col-sm-3 col-form-label text-end">Remark</label>
+                            <div class="col-sm-9">
+                                 <textarea required="" class="form-control" rows="4" id="Remark" name="Remark" asp-for="Remark" placeholder=""></textarea> @*form="usrform"*@
+                                <span asp-validation-for="Remark" class="text-danger"></span>
+                            </div>
+                        </div>
+                         
+                        <div class="row mb-3">
+                            <label for="" class="col-sm-3 col-form-label text-end">Party Type Status</label>
+                            <div class="col-sm-9">
+                                @Html.CheckBoxFor(s => s.IsActive)
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label class="col-sm-3 col-form-label"></label>
+                        <div class="col-sm-9">
+                            <button type="submit" class="btn btn-primary btn-info px-5">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

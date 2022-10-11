@@ -1,0 +1,93 @@
+﻿@model Business.Entities.Marketing.Feedback.MarketingFeedback;
+@{
+    ViewData["Title"] = "Feedback Create...!";
+    Layout = "~/Areas/Marketing/Views/Shared/_LayoutMaster.cshtml";
+}
+
+<div class="container pt-5">
+    <div class="card-body">
+        <div class="card col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <div class="page-breadcrumb align-items-center border-bottom">
+                <div class="p-2">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb mb-0 p-0">
+                            <li class="breadcrumb-item">
+                                <a asp-controller="Feedback" asp-action="Index" asp-area="Marketing"><i class="bx bx-home-alt"></i></a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page"><a asp-controller="Feedback" asp-action="Index" asp-area="Marketing">Feedback</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Create</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+            <div class="row ">
+
+                <form method="post" asp-action="CreateMarketingFeedback" asp-controller="Feedback" asp-area="Marketing" class="needs-validation" novalidate enctype="multipart/form-data" asp-validation-for="All">
+                    <div class="row p-4">
+                        <div class="row mb-3">
+                            <input type="hidden" asp-for="MarketingFeedbackID" />
+                            <label for="" class="col-sm-3 col-form-label ">Party Name</label>
+                            <div class="col-sm-9">
+                                <input type="text" required="" class="form-control" id="PartyName" name="PartyName" asp-for="PartyName">
+                                <span asp-validation-for="PartyName" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label asp-for="PartyTypeID" class="col-sm-3 col-form-label ">Party Type</label>
+                            <div class="col-sm-9">
+                                <select asp-for="PartyTypeID" asp-items="ViewBag.PartyTypeText" class="form-control">
+                                    <option value="">Select Party Type...</option>
+                                </select>                                
+                                <span asp-validation-for="PartyTypeID" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="" class="col-sm-3 col-form-label">Email</label>
+                            <div class="col-sm-9">
+                                <input type="text" required="" class="form-control" id="Email" name="Email" asp-for="Email">
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="" class="col-sm-3 col-form-label">Received Document</label>
+                            <div class="col-sm-9">
+                                @Html.CheckBoxFor(s => s.IsReceivedDocument)
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="" class="col-sm-3 col-form-label">Mobile No.</label>
+                            <div class="col-sm-9">
+                                <input type="text" required="" class="form-control" id="MobileNo" name="MobileNo" asp-for="MobileNo">
+                                <span asp-validation-for="MobileNo" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="" class="col-sm-3 col-form-label">Feedback Note</label>
+                            <div class="col-sm-9">
+                                <textarea required="" class="form-control" rows="4" id="Note" name="Note" asp-for="Note"></textarea>
+                                <span asp-validation-for="Note" class="text-danger"></span>
+                            </div>
+                        </div>
+
+
+
+
+                        <div class="row mb-3">
+                            <label class="col-sm-3 col-form-label"></label>
+                            <div class="col-sm-9">
+                                <button type="submit" class="btn btn-primary btn-info px-5">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+@*</div>*@

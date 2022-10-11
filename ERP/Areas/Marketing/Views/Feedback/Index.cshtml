@@ -1,0 +1,49 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using Business.SQL
+@using GridCore
+@addTagHelper *, GridMvc
+@model ISGrid
+@{
+    Layout = "~/Areas/Marketing/Views/Shared/_LayoutMaster.cshtml";
+    ViewBag.Title = "Feedback List..";
+}
+
+<div class="container margin-top-2">
+    <div class="card-body">
+        <div class="col-sm-12 col-md-12 col-lg-12 mx-auto">
+            <div class="card border-1 shadow rounded-7 mt-5 p-1">
+                <div class="row border-bottom">
+
+                    <div class="col-sm-12 col-md-6 col-lg-6">
+                        <div class="page-breadcrumb align-items-center">
+                            <div class="p-2">
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb mb-0 p-0">
+                                        <li class="breadcrumb-item">
+                                            <a asp-controller="Feedback" asp-action="Index" asp-area="Marketing"><i class="bx bx-home-alt"></i></a>
+                                        </li>
+                                        <li class="breadcrumb-item active" aria-current="page">Feedback</li>
+                                    </ol>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-md-6 col-lg-6 text-end">
+                        <div class="p-1">
+                            <input class="btn btn-outline-primary btn-sm" type="button" value="Add New" onclick="location.href='@Url.Action("Create", "Feedback")'" />
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <grid model="@Model" />
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/js/gridmvc.js" type="text/javascript"></script>

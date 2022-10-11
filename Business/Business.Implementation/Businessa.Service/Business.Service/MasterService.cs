@@ -2,6 +2,7 @@
 using Business.Entities.Department;
 using Business.Entities.Designation;
 using Business.Entities.Master;
+using Business.Entities.PartyType;
 using Business.Entities.User;
 using Business.Interface;
 using Business.SQL;
@@ -349,5 +350,40 @@ namespace Business.Service
             return lst;
         }
 
+        public PagedDataTable<PartyTypeMaster> GetPartyTypeMasterAsync()
+        {
+            DataTable table = new DataTable();
+            int totalItemCount = 0;
+            PagedDataTable<PartyTypeMaster> lst = new PagedDataTable<PartyTypeMaster>();
+            try
+            {
+                using (DataSet ds = SqlHelper.ExecuteDataset(connection, CommandType.StoredProcedure, "Usp_GetAll_PartyTypeMaster"))
+                {
+                    if (ds.Tables.Count > 0)
+                    {
+                        table = ds.Tables[0];
+                        if (table.Rows.Count > 0)
+                        {
+                            if (table.ContainColumn("TotalCount"))
+                                totalItemCount = Convert.ToInt32(table.Rows[0]["TotalCount"]);
+                            else
+                                totalItemCount = table.Rows.Count;
+                        }
+                    }
+                    lst = table.ToPagedDataTableList<PartyTypeMaster>
+                       (1, 20, totalItemCount, null, "PartyTypeText", "ASC");
+                }
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                if (table != null)
+                    table.Dispose();
+            }
+            return lst;
+        }
     }
 }

@@ -7,6 +7,7 @@ using Business.SQL;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using Business.Entities.PartyType;
 
 namespace Business.Interface
 {
@@ -24,5 +25,6 @@ namespace Business.Interface
         PagedDataTable<UserRoleMaster> GetUserRoleMasterAsync();
         PagedDataTable<DepartmentGroup> GetDepartmentGroupsMasterAsync();
         PagedDataTable<DesignationGroup> GetDesignationGroupMasterAsync();
+        PagedDataTable<PartyTypeMaster> GetPartyTypeMasterAsync();
     }
 }

@@ -2109,7 +2109,7 @@ nkstop {
         }
 
         #footer .footer-top .footer-links ul li {
-            border-bottom: 1px solid #333;
+            /*border-bottom: 1px solid #333;*/
             padding: 0px 0;
         }
 
@@ -2160,7 +2160,7 @@ nkstop {
 
 #footer .copyright {
     text-align: center;
-    padding-top: 30px;
+    padding-top: 10px;
 }
 
 #footer .credits {
