@@ -2,6 +2,7 @@
 using Business.Entities.Master;
 using Business.Entities.User;
 using Business.Entities.Department;
+using Business.Entities.Designation;
 using Business.SQL;
 using System.Collections.Generic;
 using System.Threading;
@@ -37,5 +38,6 @@ namespace Business.Interface
         PagedDataTable<GenderMaster> GetGender(int genderID);
         PagedDataTable<EmailGroupMaster> GetEmailGroupMaster(int emailGroupID);
         PagedDataTable<SecurityOfficerMaster> GetAllSecurityOfficers();
+        PagedDataTable<DesignationGroup> GetDesignationGroupMasterAsync();
     }
 }

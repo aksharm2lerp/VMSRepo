@@ -331,6 +331,14 @@ namespace Business.Service
                         ,new SqlParameter("@SortBy","")
                         };
                 using (DataSet ds = SqlHelper.ExecuteDataset(connection, CommandType.StoredProcedure, "Usp_GetAll_DepartmentMaster", param))
+        public PagedDataTable<DesignationGroup> GetDesignationGroupMasterAsync()
+        {
+            DataTable table = new DataTable();
+            int totalItemCount = 0;
+            PagedDataTable<DesignationGroup> lst = new PagedDataTable<DesignationGroup>();
+            try
+            {
+                using (DataSet ds = SqlHelper.ExecuteDataset(connection, CommandType.StoredProcedure, "Usp_GetAll_DesignationGroupMaster"))
                 {
                     if (ds.Tables.Count > 0)
                     {
@@ -344,6 +352,8 @@ namespace Business.Service
                         }
                     }
                     lst = table.ToPagedDataTableList<Department>();
+                    lst = table.ToPagedDataTableList<DesignationGroup>
+                       (1, 20, totalItemCount, null, "DesignationGroupText", "ASC");
                 }
             }
             catch
@@ -755,6 +765,5 @@ namespace Business.Service
         }
 
         #endregion Single record select
-
     }
 }
