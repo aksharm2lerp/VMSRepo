@@ -4,10 +4,6 @@ using Business.Entities.User;
 using Business.Entities.Department;
 using Business.Entities.Designation;
 using Business.SQL;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
-using Business.Entities.PartyType;
 
 namespace Business.Interface
 {

@@ -2,17 +2,13 @@
 using Business.Entities.Department;
 using Business.Entities.Designation;
 using Business.Entities.Master;
-using Business.Entities.PartyType;
 using Business.Entities.User;
 using Business.Interface;
 using Business.SQL;
 using Microsoft.Extensions.Configuration;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Business.Service
 {
