@@ -1,0 +1,91 @@
+﻿@model Business.Entities.SecurityOfficer.SecurityOfficerMaster
+@{
+    ViewData["Title"] = "Add new Security officer..!";
+    Layout = "~/Views/Shared/_LayoutMaster.cshtml";
+}
+
+<div class="container pt-5">
+    <div class="card-body">
+        <div class="card col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <div class="page-breadcrumb align-items-center border-bottom">
+                <div class="p-2">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb mb-0 p-0">
+                            <li class="breadcrumb-item">
+                                <a asp-controller="SecurityOfficer" asp-action="Index" asp-area="SuperAdmin"><i class="bx bx-home-alt"></i></a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page"><a asp-controller="SecurityOfficer" asp-action="Index" asp-area="SuperAdmin">Security Officer</a></li>
+                            @if (Model != null && Model.SecurityOfficerID > 0)
+                            {
+                                <li class="breadcrumb-item active" aria-current="page">Update security officer</li>
+                            }
+                            else
+                            {
+                                <li class="breadcrumb-item active" aria-current="page">Add new security officer</li>
+                            }
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+            <div class="row">
+                <form method="post" asp-action="AddUpdateSecurityOfficer" asp-controller="SecurityOfficer" asp-area="SuperAdmin" class="row g-3 needs-validation" novalidate enctype="multipart/form-data">
+
+                    <div class=" col-sm-12 col-md-12 col-lg-12">
+                        <input type="hidden" asp-for="SecurityOfficerID" />
+
+                        <div class="row mb-3">
+                            <label for="" class="col-sm-3 col-form-label text-end">Security Officer Name:</label>
+                            <div class="col-sm-9">
+                                <input type="text" required="" class="form-control" id="SecurityOfficerName" name="SecurityOfficerName" asp-for="SecurityOfficerName" placeholder="">
+                                <span asp-validation-for="SecurityOfficerName" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="" class="col-sm-3 col-form-label text-end">Security Agency Name:</label>
+                            <div class="col-sm-9">
+                                <input type="text" required="" class="form-control" id="SecurityAgencyName" name="SecurityAgencyName" asp-for="SecurityAgencyName" placeholder="">
+                                <span asp-validation-for="SecurityAgencyName" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="" class="col-sm-3 col-form-label text-end">Security Officer Mobile:</label>
+                            <div class="col-sm-9">
+                                <input type="text" required="" class="form-control" id="SecurityOfficerMobile" name="SecurityOfficerMobile" asp-for="SecurityOfficerMobile" placeholder="">
+                                <span asp-validation-for="SecurityOfficerMobile" class="text-danger"></span>
+                            </div>
+                        </div>
+
+
+                        <div class="row mb-3">
+                            <label for="" class="col-sm-3 col-form-label text-end">Identity Proof Type:</label>
+                            <div class="col-sm-9">
+                                <!--add below asp-items="ViewBag" for designation-->
+                                <select asp-for="IdentityProofTypeID" asp-items="ViewBag.IdentityProofType" class="form-control">
+                                    <option value="">Select Identity Proof Type</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="" class="col-sm-3 col-form-label text-end">Identity Proof Number:</label>
+                            <div class="col-sm-9">
+                                <input type="text" required="" class="form-control" asp-for="IdentityProofNumber" placeholder="">
+                                <span asp-validation-for="IdentityProofNumber" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row mb-3">
+                        <label class="col-sm-3 col-form-label"></label>
+                        <div class="col-sm-9">
+                            <button type="submit" class="btn btn-primary btn-info px-5">Submit</button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

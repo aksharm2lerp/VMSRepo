@@ -9,9 +9,8 @@ namespace Business.Entities.Designation
 {
     public class DesignationMaster
     {
-        public int SrNo { get; set; }
-    
         public int DesignationID { get; set; }
+        public int SrNo { get; set; }
 
         [Required(ErrorMessage = "Please Enter the Designation Name")]
         public string DesignationText{ get; set; }
@@ -27,6 +26,5 @@ namespace Business.Entities.Designation
         public bool IsActive { get; set; } = true;
 
         public int CreatedOrModifiedBy { get; set; }
-
     }
 }

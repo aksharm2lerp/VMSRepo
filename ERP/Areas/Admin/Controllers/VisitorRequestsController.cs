@@ -24,6 +24,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Hosting;
 using SelectPdf;
 using System.Linq;
+using Business.Service;
 
 namespace ERP.Areas.Admin.Controllers
 {
@@ -38,7 +39,9 @@ namespace ERP.Areas.Admin.Controllers
         private readonly INotyfService _notyf;
         private readonly IMasterService _masterService;
         private readonly IHostingEnvironment _env;
-        public VisitorRequestsController(IVisitorService visitorService, IEmailService emailService, IViewRenderService viewRenderService, INotyfService notyf, IMasterService masterService, IHostingEnvironment hostingEnvironment)
+        private readonly IEmployeeService _employeeService;
+        private readonly ISecurityOfficerService _securityOfficerService;
+        public VisitorRequestsController(IVisitorService visitorService, IEmailService emailService, IViewRenderService viewRenderService, INotyfService notyf, IMasterService masterService, IHostingEnvironment hostingEnvironment, IEmployeeService employeeService, ISecurityOfficerService securityOfficerService)
         {
             this._visitorService = visitorService;
             this._emailService = emailService;
@@ -46,6 +49,8 @@ namespace ERP.Areas.Admin.Controllers
             this._notyf = notyf;
             this._masterService = masterService;
             this._env = hostingEnvironment;
+            _employeeService = employeeService;
+            _securityOfficerService = securityOfficerService;
         }
         private void Errors(IdentityResult result)
         {
@@ -191,6 +196,12 @@ namespace ERP.Areas.Admin.Controllers
             ViewData["IdentityProofType"] = new SelectList(idProofList, "IdentityProofTypeID", "IdentityProofTypeText");
             var vehicleTypeList = _masterService.GetVehicleTypeAsync();
             ViewData["VehicleTypeID"] = new SelectList(vehicleTypeList, "VehicleTypeID", "VehicleTypeText");
+
+            var listEmployees = _masterService.GetAllEmployees();
+            ViewData["MeetToWhomPersonName"] = new SelectList(listEmployees, "EmployeeID", "EmployeeName");
+
+            var listSecurityOfficer = _masterService.GetAllSecurityOfficers();
+            ViewData["ListSecurityOfficer"] = new SelectList(listSecurityOfficer, "SecurityOfficerID", "SecurityOfficerName");
 
             return View(model);
         }
@@ -527,6 +538,19 @@ namespace ERP.Areas.Admin.Controllers
                 
             }
             return null;
+        }
+
+        public JsonResult EmployeeOrSecurityOfficerDetails(int id)
+        {
+            var emploeeDetails = _employeeService.GetEmployeeAsync(id).Result;
+            if (emploeeDetails != null)
+                return Json(emploeeDetails);
+
+            var securityOfficerDetails = _securityOfficerService.GetSecurityOfficerAsync(id).Result;
+            if(securityOfficerDetails != null)
+                return Json(securityOfficerDetails);
+
+            return Json("Something went wrong.");
         }
     }
 }
