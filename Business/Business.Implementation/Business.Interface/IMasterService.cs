@@ -6,6 +6,10 @@ using Business.SQL;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using Business.Entities.Designation;
+using Business.Entities.Employee;
+using Business.Entities.Gender;
+using Business.Entities.SecurityOfficer;
 
 namespace Business.Interface
 {
@@ -22,6 +26,16 @@ namespace Business.Interface
         PagedDataTable<BusinessTypeMaster> GetBusinessTypeMasterAsync();
         PagedDataTable<UserRoleMaster> GetUserRoleMasterAsync();
         PagedDataTable<DepartmentGroup> GetDepartmentGroupsMasterAsync();
-
+        PagedDataTable<Department> GetAllDepartments();
+        PagedDataTable<DesignationMaster> GetAllDesignations();
+        PagedDataTable<EmployeeMaster> GetAllEmployees();
+        PagedDataTable<GenderMaster> GetAllGenders();
+        PagedDataTable<EmailGroupMaster> GetAllEmailGroupMaster();
+        PagedDataTable<Department> GetDepartment(int departmentId);
+        PagedDataTable<DesignationMaster> GetDesignation(int designationID);
+        PagedDataTable<EmployeeMaster> GetEmployee(int employeeID);
+        PagedDataTable<GenderMaster> GetGender(int genderID);
+        PagedDataTable<EmailGroupMaster> GetEmailGroupMaster(int emailGroupID);
+        PagedDataTable<SecurityOfficerMaster> GetAllSecurityOfficers();
     }
 }

@@ -1,0 +1,244 @@
+﻿@model Business.Entities.Employee.AddUpdateEmployee
+@{
+    ViewData["Title"] = "Update Employee..!";
+    Layout = "~/Views/Shared/_LayoutMaster.cshtml";
+}
+
+
+<div class="container pt-5">
+    <div class="card-body">
+        <div class="card col-sm-12 col-md-12 col-lg-12 col-xl-12 p-4">
+            <div class="page-breadcrumb align-items-center border-bottom">
+                <div class="p-2">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb mb-0 p-0">
+                            <li class="breadcrumb-item">
+                                <a asp-controller="Employee" asp-action="Index" asp-area="SuperAdmin"><i class="bx bx-home-alt"></i></a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page"><a asp-controller="Employee" asp-action="Index" asp-area="SuperAdmin">Employee</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Update employee details</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+            <div class="row">
+                <form method="post" asp-action="AddUpdateEmployee" asp-controller="Employee" asp-area="SuperAdmin" class="row g-3 needs-validation" novalidate enctype="multipart/form-data">
+
+                    <div class=" col-sm-12 col-md-6 col-lg-6">
+                        <input type="hidden" asp-for="EmployeeID" />
+                        <div class="row mb-3">
+                            <label for="" class="col-sm-3 col-form-label ">Prefix:</label>
+                            <div class="col-sm-9">
+                                <select asp-for="PrefixName" name="prefixName" id="PrefixName" class="form-control">
+                                    <option value="Mr.">Mr.</option>
+                                    <option value="Mrs.">Mrs.</option>
+                                    <option value="Ms.">Ms.</option>
+                                    <option value="Miss.">Miss.</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="" class="col-sm-3 col-form-label ">First Name:</label>
+                            <div class="col-sm-9">
+                                <input type="text" required="" class="form-control" id="FirstName" name="FirstName" asp-for="FirstName" placeholder="">
+                                <span asp-validation-for="FirstName" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="" class="col-sm-3 col-form-label ">Middle Name:</label>
+                            <div class="col-sm-9">
+                                <input type="text" required="" class="form-control" id="MiddleName" name="MiddleName" asp-for="MiddleName" placeholder="">
+                                <span asp-validation-for="MiddleName" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="" class="col-sm-3 col-form-label ">Last Name:</label>
+                            <div class="col-sm-9">
+                                <input type="text" required="" class="form-control" id="LastName" name="LastName" asp-for="LastName" placeholder="">
+                                <span asp-validation-for="LastName" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="" class="col-sm-3 col-form-label ">Employee code:</label>
+                            <div class="col-sm-9">
+                                <input type="text" required="" class="form-control" id="employeeCode" name="employeeCode" asp-for="EmployeeCode" placeholder="">
+                                <span asp-validation-for="LastName" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="" class="col-sm-3 col-form-label ">Job title:</label>
+                            <div class="col-sm-9">
+                                <input type="text" required="" class="form-control" id="jobTitle" name="jobTitle" asp-for="JobTitle" placeholder="">
+                                <span asp-validation-for="JobTitle" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="" class="col-sm-3 col-form-label ">Department:</label>
+                            <div class="col-sm-9">
+                                <select asp-for="DepartmentID" asp-items="ViewBag.DepartmentIdName" class="form-control">
+                                    <option value="">Select Department</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="" class="col-sm-3 col-form-label ">Designation:</label>
+                            <div class="col-sm-9">
+                                <!--add below asp-items="ViewBag" for designation-->
+                                <select asp-for="DesignationID" asp-items="ViewBag.DesignationIdText" class="form-control">
+                                    <option value="">Select Designation</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="" class="col-sm-3 col-form-label ">Reporting to name:</label>
+                            <div class="col-sm-9">
+                                <!--add below asp-items="ViewBag" for reporting list-->
+                                <select asp-for="ReportingTo" asp-items="ViewBag.EmployeeIdName" class="form-control">
+                                    <option value="">Reporting to name</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="" class="col-sm-3 col-form-label ">Personel mobile no:</label>
+                            <div class="col-sm-9">
+                                <input type="text" required="" class="form-control" id="PersonalMobileNo" name="PersonalMobileNo" asp-for="PersonalMobileNo" placeholder="">
+                                <span asp-validation-for="PersonalMobileNo" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="" class="col-sm-3 col-form-label ">Office mobile no:</label>
+                            <div class="col-sm-9">
+                                <input type="text" required="" class="form-control" id="OfficeMobileNo" name="OfficeMobileNo" asp-for="OfficeMobileNo" placeholder="">
+                                <span asp-validation-for="OfficeMobileNo" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="" class="col-sm-3 col-form-label ">Alternate mobile no:</label>
+                            <div class="col-sm-9">
+                                <input type="text" required="" class="form-control" id="AlternativeMobileNo" name="AlternativeMobileNo" asp-for="AlternativeMobileNo" placeholder="">
+                                <span asp-validation-for="AlternativeMobileNo" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="" class="col-sm-3 col-form-label ">Is Resigned:</label>
+                            <div class="col-sm-9">
+                                @Html.CheckBoxFor(s => s.IsResigned)
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-sm-12 col-md-6 col-lg-6">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <label for="" class="col-form-label ">Profile Image:</label>
+                            </div>
+                            <div class="col-sm-3">
+                                <input asp-for="ProfilePhoto" type="file" class="form-control custom-file-input" accept="image/*" name="profilePhoto" id="profilePhoto" onchange="loadFile(event)" style="display: none;" src="@ViewBag.Image" />
+                                <label for="profilePhoto" style="cursor: pointer; color:darkblue">
+                                    Upload the image for logo<br />
+                                    <img id="output" width="200" height="200" src="@ViewBag.Image" />
+                                </label>
+                                <script>
+                                    var loadFile = function (event) {
+                                        var image = document.getElementById('output');
+                                        image.src = URL.createObjectURL(event.target.files[0]);
+                                    };
+                                </script>
+                            </div>
+                        </div>
+                        <br />
+                        @*                        <div class="row mb-3">
+                        <label for="" class="col-sm-3 col-form-label ">Email group name:</label>
+                        <div class="col-sm-9">
+                        <input type="text" required="" class="form-control" id="emailGroupName" name="EmailGroupName" asp-for="EmailGroupID" placeholder="">
+                        <span asp-validation-for="EmailGroupID" class="text-danger"></span>
+                        </div>
+                        </div>*@
+
+                        <div class="row mb-3">
+                            <label for="" class="col-sm-3 col-form-label ">Email group name:</label>
+                            <div class="col-sm-9">
+                                <!--add below asp-items="ViewBag" for reporting list-->
+                                <select asp-for="EmailGroupID" asp-items="ViewBag.EmailGroupName" class="form-control">
+                                    <option value="">Email group</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="" class="col-sm-3 col-form-label ">Personal email:</label>
+                            <div class="col-sm-9">
+                                <input type="text" required="" class="form-control" id="personalEmail" name="personalEmail" asp-for="PersonalEmail" placeholder="">
+                                <span asp-validation-for="PersonalEmail" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="" class="col-sm-3 col-form-label ">Office email:</label>
+                            <div class="col-sm-9">
+                                <input type="text" required="" class="form-control" id="officeEmail" name="officeEmail" asp-for="OfficeEmail" placeholder="">
+                                <span asp-validation-for="OfficeEmail" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="" class="col-sm-3 col-form-label ">Gender:</label>
+                            <div class="col-sm-9">
+                                <!--add below asp-items="ViewBag" for gender-->
+                                <select asp-for="GenderID" asp-items="ViewBag.GenderIdText" class="form-control">
+                                    <option value="">Select gender</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="" class="col-sm-3 col-form-label ">Birthdate:</label>
+                            <div class="col-sm-9">
+                                <input type="date" required="" class="form-control" id="birthdate" name="birthdate" asp-for="BirthDate" placeholder="">
+                                <span asp-validation-for="BirthDate" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="" class="col-sm-3 col-form-label ">Religion:</label>
+                            <div class="col-sm-9">
+                                <input type="text" required="" class="form-control" id="Religion" name="Religion" asp-for="Religion" placeholder="">
+                                <span asp-validation-for="Religion" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row m-3">
+                        <label for="" class="col-sm-1 col-form-label">Note:</label>
+
+                        <div class="col-sm-11 col-md-11 col-lg-11">
+                            <textarea required="" class="form-control" rows="4" cols="50" id="note" name="Note" asp-for="Note" placeholder=""></textarea>
+                            <span asp-validation-for="Note" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label class="col-sm-3 col-form-label"></label>
+                        <div class="col-sm-9">
+                            <button type="submit" class="btn btn-primary btn-info px-5">Submit</button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

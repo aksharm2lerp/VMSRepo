@@ -69,8 +69,21 @@
                         <a asp-area="Admin" asp-controller="Users" asp-action="Index"><i class="bx bx-right-arrow-alt"></i>Users</a>
                     </secure-content>
                 </li>
-                <!--Users--> 
-                 
+                <!--Users-->
+                <!--EmployeeMaster-->
+                <li>
+                    <secure-content asp-area="SuperAdmin" asp-controller="Employee" asp-action="Index">
+                        <a asp-area="SuperAdmin" asp-controller="Employee" asp-action="Index"><i class="bx bx-right-arrow-alt"></i>Employee</a>
+                    </secure-content>
+                </li>
+                <!--EmployeeMaster-->
+                <!--SecurityOfficer-->
+                <li>
+                    <secure-content asp-area="SuperAdmin" asp-controller="SecurityOfficer" asp-action="Index">
+                        <a asp-area="SuperAdmin" asp-controller="SecurityOfficer" asp-action="Index"><i class="bx bx-right-arrow-alt"></i>Security Officer</a>
+                    </secure-content>
+                </li>
+                <!--SecurityOfficer-->
                 <!--User Permissions--> 
                 <li>
                     <secure-content asp-area="Admin" asp-controller="" asp-action="">

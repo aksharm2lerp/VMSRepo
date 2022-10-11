@@ -11,6 +11,7 @@ using System.IO;
 using MimeKit;
 using AspNetCoreHero.ToastNotification.Abstractions;
 using Microsoft.AspNetCore.Hosting;
+using Business.Service;
 
 namespace ERP.Controllers
 {
@@ -23,13 +24,17 @@ namespace ERP.Controllers
         IEmailService _emailService = null;
         private readonly INotyfService _notyf;
         private readonly IHostingEnvironment _env;
-        public VisitorController(IConfiguration configuration, IEmailService emailService, INotyfService notyf, IHostingEnvironment hostingEnvironment)
+        private readonly IMasterService _masterService;
+        private readonly IEmployeeService _employeeService;
+        public VisitorController(IConfiguration configuration, IEmailService emailService, INotyfService notyf, IHostingEnvironment hostingEnvironment, IMasterService masterService, IEmployeeService employeeService)
         {
             _config = configuration;
             service = new Business.Service.VisitorService(_config);
             _emailService = emailService;
             _notyf = notyf;
             _env = hostingEnvironment;
+            _masterService = masterService;
+            _employeeService = employeeService;
         }
         // GET: VisitorController
         public ActionResult Index()
@@ -53,7 +58,8 @@ namespace ERP.Controllers
             ViewData["IdentityProofType"] = new SelectList(idProofList, "IdentityProofTypeID", "IdentityProofTypeText");
             var vehicleTypeList = new Business.Service.MasterService(_config).GetVehicleTypeAsync();
             ViewData["VehicleTypeID"] = new SelectList(vehicleTypeList, "VehicleTypeID", "VehicleTypeText");
-
+            var listEmployees = _masterService.GetAllEmployees();
+            ViewData["MeetToWhomPersonName"] = new SelectList(listEmployees, "EmployeeID", "EmployeeName");
             return View(model);
         }
 
@@ -83,7 +89,7 @@ namespace ERP.Controllers
                     {
                         //send email to whom visitor wants to meet
                         MailRequest request = new MailRequest();
-                        request.Subject = "Meeting Request -"+ model.MeetingRequestTitle;
+                        request.Subject = "Meeting Request -" + model.MeetingRequestTitle;
                         request.ToEmail = model.MeetToWhomPersonEmail;
                         string FilePath = Directory.GetCurrentDirectory() + "\\Templates\\VisitorRequest.html";
                         StreamReader str = new StreamReader(FilePath);
@@ -109,7 +115,7 @@ namespace ERP.Controllers
                         MailText = MailText.Replace("#Visitor#", model.FirstName + " " + model.LastName);
                         filePathCompLogo = Path.Combine(Directory.GetCurrentDirectory(), "/companylogo/logo.png");
                         MailText = MailText.Replace("#CompanyName#", "Industrial Boilers LTD");
-                        MailText = MailText.Replace("#CompanyLogo#", "<img src='"+ filePathCompLogo + "' alt='Industrial Boilers LTD' />");
+                        MailText = MailText.Replace("#CompanyLogo#", "<img src='" + filePathCompLogo + "' alt='Industrial Boilers LTD' />");
                         request.Body = MailText;
                         _emailService.SendEmail(request);
                     }
@@ -126,7 +132,7 @@ namespace ERP.Controllers
                 model.MeetingRequestDateTime = System.DateTime.Now;
             }
             var idProofList = new Business.Service.MasterService(_config).GetIdentityProofTypeAsync();
-            ViewData["IdentityProofType"] = new SelectList(idProofList, "IdentityProofTypeID", "IdentityProofTypeText"); 
+            ViewData["IdentityProofType"] = new SelectList(idProofList, "IdentityProofTypeID", "IdentityProofTypeText");
             var vehicleTypeList = new Business.Service.MasterService(_config).GetVehicleTypeAsync();
             ViewData["VehicleTypeID"] = new SelectList(vehicleTypeList, "VehicleTypeID", "VehicleTypeText");
 
@@ -195,6 +201,12 @@ namespace ERP.Controllers
             {
                 return Json(false);
             }
+        }
+
+        public JsonResult EmployeeDetails(int id)
+        {
+            var emploeeDetails = _employeeService.GetEmployeeAsync(id).Result;
+            return Json(emploeeDetails);
         }
     }
 }

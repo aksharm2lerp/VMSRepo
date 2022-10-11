@@ -38,7 +38,8 @@ namespace ERP
             services.AddSingleton<IAuthorizationPolicyProvider, PermissionPolicyProvider>();
             services.AddScoped<IAuthorizationHandler, PermissionAuthorizationHandler>();
             services.AddScoped<IDepartmentService, DepartmentService>();
-
+            services.AddScoped<IEmployeeService, EmployeeService>();
+            services.AddScoped<ISecurityOfficerService, SecurityOfficerService>();
             services.AddIdentity<UserMasterMetadata, RoleMasterMetadata>()
                 .AddDefaultTokenProviders();
             services.Configure<IdentityOptions>(options =>

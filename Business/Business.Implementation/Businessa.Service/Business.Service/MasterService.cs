@@ -1,16 +1,19 @@
 ﻿using Business.Entities;
 using Business.Entities.Department;
+using Business.Entities.Designation;
+using Business.Entities.Employee;
+using Business.Entities.Gender;
 using Business.Entities.Master;
+using Business.Entities.SecurityOfficer;
 using Business.Entities.User;
 using Business.Interface;
 using Business.SQL;
+using MailKit.Search;
 using Microsoft.Extensions.Configuration;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Threading;
-using System.Threading.Tasks;
+using System.Globalization;
 
 namespace Business.Service
 {
@@ -311,6 +314,447 @@ namespace Business.Service
             }
             return lst;
         }
+
+        #region Multiple record select
+        public PagedDataTable<Department> GetAllDepartments()
+        {
+            DataTable table = new DataTable();
+            int totalItemCount = 0;
+            PagedDataTable<Department> lst = new PagedDataTable<Department>();
+            try
+            {
+                SqlParameter[] param = {
+                        new SqlParameter("@PageNo",1)
+                        ,new SqlParameter("@PageSize","0")
+                        ,new SqlParameter("@SearchString","")
+                        ,new SqlParameter("@OrderBy","")
+                        ,new SqlParameter("@SortBy","")
+                        };
+                using (DataSet ds = SqlHelper.ExecuteDataset(connection, CommandType.StoredProcedure, "Usp_GetAll_DepartmentMaster", param))
+                {
+                    if (ds.Tables.Count > 0)
+                    {
+                        table = ds.Tables[0];
+                        if (table.Rows.Count > 0)
+                        {
+                            if (table.ContainColumn("TotalCount"))
+                                totalItemCount = Convert.ToInt32(table.Rows[0]["TotalCount"]);
+                            else
+                                totalItemCount = table.Rows.Count;
+                        }
+                    }
+                    lst = table.ToPagedDataTableList<Department>();
+                }
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                if (table != null)
+                    table.Dispose();
+            }
+            return lst;
+        }
+
+        public PagedDataTable<DesignationMaster> GetAllDesignations()
+        {
+            DataTable table = new DataTable();
+            int totalItemCount = 0;
+            PagedDataTable<DesignationMaster> lst = new PagedDataTable<DesignationMaster>();
+            try
+            {
+                SqlParameter[] param = {
+                    new SqlParameter("@PageNo", 1),
+                    new SqlParameter("@PageSize", "0"),
+                };
+                using (DataSet ds = SqlHelper.ExecuteDataset(connection, CommandType.StoredProcedure, "Usp_GetAll_DesignationMaster", param))
+                {
+                    if (ds.Tables.Count > 0)
+                    {
+                        table = ds.Tables[0];
+                        if (table.Rows.Count > 0)
+                        {
+                            if (table.ContainColumn("TotalCount"))
+                                totalItemCount = Convert.ToInt32(table.Rows[0]["TotalCount"]);
+                            else
+                                totalItemCount = table.Rows.Count;
+                        }
+                    }
+                    lst = table.ToPagedDataTableList<DesignationMaster>();
+                }
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                if (table != null)
+                    table.Dispose();
+            }
+            return lst;
+        }
+
+        public PagedDataTable<EmployeeMaster> GetAllEmployees()
+        {
+            DataTable table = new DataTable();
+            int totalItemCount = 0;
+            PagedDataTable<EmployeeMaster> lst = new PagedDataTable<EmployeeMaster>();
+            try
+            {
+                SqlParameter[] param = {
+                        new SqlParameter("@PageNo",1)
+                        ,new SqlParameter("@PageSize","0")
+                        ,new SqlParameter("@SearchString","")
+                        ,new SqlParameter("@OrderBy","")
+                        ,new SqlParameter("@SortBy","")
+                        };
+                using (DataSet ds = SqlHelper.ExecuteDataset(connection, CommandType.StoredProcedure, "Usp_GetAll_EmployeeMaster", param))
+                {
+                    if (ds.Tables.Count > 0)
+                    {
+                        table = ds.Tables[0];
+                        if (table.Rows.Count > 0)
+                        {
+                            if (table.ContainColumn("TotalCount"))
+                                totalItemCount = Convert.ToInt32(table.Rows[0]["TotalCount"]);
+                            else
+                                totalItemCount = table.Rows.Count;
+                        }
+                    }
+                    lst = table.ToPagedDataTableList<EmployeeMaster>();
+                }
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                if (table != null)
+                    table.Dispose();
+            }
+            return lst;
+        }
+
+        public PagedDataTable<GenderMaster> GetAllGenders()
+        {
+            DataTable table = new DataTable();
+            int totalItemCount = 0;
+            PagedDataTable<GenderMaster> lst = new PagedDataTable<GenderMaster>();
+            try
+            {
+                SqlParameter[] param = {
+                    new SqlParameter("@PageNo", 0),
+                    new SqlParameter("@PageSize", "5"),
+                };
+                using (DataSet ds = SqlHelper.ExecuteDataset(connection, CommandType.StoredProcedure, "Usp_GetAll_GenderMaster", param))
+                {
+                    if (ds.Tables.Count > 0)
+                    {
+                        table = ds.Tables[0];
+                        if (table.Rows.Count > 0)
+                        {
+                            if (table.ContainColumn("TotalCount"))
+                                totalItemCount = Convert.ToInt32(table.Rows[0]["TotalCount"]);
+                            else
+                                totalItemCount = table.Rows.Count;
+                        }
+                    }
+                    lst = table.ToPagedDataTableList<GenderMaster>();
+                }
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                if (table != null)
+                    table.Dispose();
+            }
+            return lst;
+        }
+        public PagedDataTable<EmailGroupMaster> GetAllEmailGroupMaster()
+        {
+            DataTable table = new DataTable();
+            int totalItemCount = 0;
+            PagedDataTable<EmailGroupMaster> lst = new PagedDataTable<EmailGroupMaster>();
+            try
+            {
+                using (DataSet ds = SqlHelper.ExecuteDataset(connection, CommandType.StoredProcedure, "Usp_GetAll_EmailGroupMaster"))
+                {
+                    if (ds.Tables.Count > 0)
+                    {
+                        table = ds.Tables[0];
+                        if (table.Rows.Count > 0)
+                        {
+                            if (table.ContainColumn("TotalCount"))
+                                totalItemCount = Convert.ToInt32(table.Rows[0]["TotalCount"]);
+                            else
+                                totalItemCount = table.Rows.Count;
+                        }
+                    }
+                    lst = table.ToPagedDataTableList<EmailGroupMaster>();
+                }
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                if (table != null)
+                    table.Dispose();
+            }
+            return lst;
+        }
+
+        public PagedDataTable<SecurityOfficerMaster> GetAllSecurityOfficers()
+        {
+            DataTable table = new DataTable();
+            int totalItemCount = 0;
+            PagedDataTable<SecurityOfficerMaster> lst = new PagedDataTable<SecurityOfficerMaster>();
+            try
+            {
+                SqlParameter[] param = {
+                        new SqlParameter("@PageNo",1)
+                        ,new SqlParameter("@PageSize","0")
+                        ,new SqlParameter("@SearchString","")
+                        ,new SqlParameter("@OrderBy","")
+                        ,new SqlParameter("@SortBy","")
+                        };
+                using (DataSet ds = SqlHelper.ExecuteDataset(connection, CommandType.StoredProcedure, "Usp_GetAll_SecurityOfficer", param))
+                {
+                    if (ds.Tables.Count > 0)
+                    {
+                        table = ds.Tables[0];
+                        if (table.Rows.Count > 0)
+                        {
+                            if (table.ContainColumn("TotalCount"))
+                                totalItemCount = Convert.ToInt32(table.Rows[0]["TotalCount"]);
+                            else
+                                totalItemCount = table.Rows.Count;
+                        }
+                    }
+                    lst = table.ToPagedDataTableList<SecurityOfficerMaster>();
+                }
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                if (table != null)
+                    table.Dispose();
+            }
+            return lst;
+        }
+        #endregion Multiple record select
+
+
+        #region Single record select
+
+        public PagedDataTable<Department> GetDepartment(int departmentId)
+        {
+            DataTable table = new DataTable();
+            int totalItemCount = 0;
+            PagedDataTable<Department> lst = new PagedDataTable<Department>();
+            try
+            {
+                SqlParameter[] param = {
+                        new SqlParameter("@PageNo",1)
+                        ,new SqlParameter("@PageSize","0")
+                        ,new SqlParameter("@SearchString","")
+                        ,new SqlParameter("@OrderBy","")
+                        ,new SqlParameter("@SortBy","")
+                        };
+                using (DataSet ds = SqlHelper.ExecuteDataset(connection, CommandType.StoredProcedure, "Usp_GetAll_DepartmentMaster", param))
+                {
+                    if (ds.Tables.Count > 0)
+                    {
+                        table = ds.Tables[0];
+                        if (table.Rows.Count > 0)
+                        {
+                            if (table.ContainColumn("TotalCount"))
+                                totalItemCount = Convert.ToInt32(table.Rows[0]["TotalCount"]);
+                            else
+                                totalItemCount = table.Rows.Count;
+                        }
+                    }
+                    lst = table.ToPagedDataTableList<Department>();
+                }
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                if (table != null)
+                    table.Dispose();
+            }
+            return lst;
+        }
+
+        public PagedDataTable<DesignationMaster> GetDesignation(int designationID)
+        {
+            DataTable table = new DataTable();
+            int totalItemCount = 0;
+            PagedDataTable<DesignationMaster> lst = new PagedDataTable<DesignationMaster>();
+            try
+            {
+                SqlParameter[] param = {
+                    new SqlParameter("@PageNo", 1),
+                    new SqlParameter("@PageSize", "0"),
+                };
+                using (DataSet ds = SqlHelper.ExecuteDataset(connection, CommandType.StoredProcedure, "Usp_GetAll_DesignationMaster", param))
+                {
+                    if (ds.Tables.Count > 0)
+                    {
+                        table = ds.Tables[0];
+                        if (table.Rows.Count > 0)
+                        {
+                            if (table.ContainColumn("TotalCount"))
+                                totalItemCount = Convert.ToInt32(table.Rows[0]["TotalCount"]);
+                            else
+                                totalItemCount = table.Rows.Count;
+                        }
+                    }
+                    lst = table.ToPagedDataTableList<DesignationMaster>();
+                }
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                if (table != null)
+                    table.Dispose();
+            }
+            return lst;
+        }
+
+        public PagedDataTable<EmployeeMaster> GetEmployee(int employeeID)
+        {
+            DataTable table = new DataTable();
+            int totalItemCount = 0;
+            PagedDataTable<EmployeeMaster> lst = new PagedDataTable<EmployeeMaster>();
+            try
+            {
+                SqlParameter[] param = {
+                        new SqlParameter("@PageNo",1)
+                        ,new SqlParameter("@PageSize","0")
+                        ,new SqlParameter("@SearchString","")
+                        ,new SqlParameter("@OrderBy","")
+                        ,new SqlParameter("@SortBy","")
+                        };
+                using (DataSet ds = SqlHelper.ExecuteDataset(connection, CommandType.StoredProcedure, "Usp_GetAll_EmployeeMaster", param))
+                {
+                    if (ds.Tables.Count > 0)
+                    {
+                        table = ds.Tables[0];
+                        if (table.Rows.Count > 0)
+                        {
+                            if (table.ContainColumn("TotalCount"))
+                                totalItemCount = Convert.ToInt32(table.Rows[0]["TotalCount"]);
+                            else
+                                totalItemCount = table.Rows.Count;
+                        }
+                    }
+                    lst = table.ToPagedDataTableList<EmployeeMaster>();
+                }
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                if (table != null)
+                    table.Dispose();
+            }
+            return lst;
+        }
+
+        public PagedDataTable<GenderMaster> GetGender(int genderID)
+        {
+            DataTable table = new DataTable();
+            int totalItemCount = 0;
+            PagedDataTable<GenderMaster> lst = new PagedDataTable<GenderMaster>();
+            try
+            {
+                SqlParameter[] param = {
+                    new SqlParameter("@PageNo", 0),
+                    new SqlParameter("@PageSize", "5"),
+                };
+                using (DataSet ds = SqlHelper.ExecuteDataset(connection, CommandType.StoredProcedure, "Usp_GetAll_GenderMaster", param))
+                {
+                    if (ds.Tables.Count > 0)
+                    {
+                        table = ds.Tables[0];
+                        if (table.Rows.Count > 0)
+                        {
+                            if (table.ContainColumn("TotalCount"))
+                                totalItemCount = Convert.ToInt32(table.Rows[0]["TotalCount"]);
+                            else
+                                totalItemCount = table.Rows.Count;
+                        }
+                    }
+                    lst = table.ToPagedDataTableList<GenderMaster>();
+                }
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                if (table != null)
+                    table.Dispose();
+            }
+            return lst;
+        }
+        public PagedDataTable<EmailGroupMaster> GetEmailGroupMaster(int emailGroupID)
+        {
+            DataTable table = new DataTable();
+            int totalItemCount = 0;
+            PagedDataTable<EmailGroupMaster> lst = new PagedDataTable<EmailGroupMaster>();
+            try
+            {
+                using (DataSet ds = SqlHelper.ExecuteDataset(connection, CommandType.StoredProcedure, "Usp_GetAll_EmailGroupMaster"))
+                {
+                    if (ds.Tables.Count > 0)
+                    {
+                        table = ds.Tables[0];
+                        if (table.Rows.Count > 0)
+                        {
+                            if (table.ContainColumn("TotalCount"))
+                                totalItemCount = Convert.ToInt32(table.Rows[0]["TotalCount"]);
+                            else
+                                totalItemCount = table.Rows.Count;
+                        }
+                    }
+                    lst = table.ToPagedDataTableList<EmailGroupMaster>();
+                }
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                if (table != null)
+                    table.Dispose();
+            }
+            return lst;
+        }
+
+        #endregion Single record select
 
     }
 }
