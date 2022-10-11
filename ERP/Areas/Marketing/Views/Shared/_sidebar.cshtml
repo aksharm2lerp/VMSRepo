@@ -1,74 +1,4 @@
-﻿@*@using ERP.Controllers
-@{
-    string path = SettingsController.LOGOPATH;
-    bool isLogo = false;
-    if (path.IsNotStringNullOrEmpty())
-    {
-        isLogo = true;
-    }
-}
-<div class="sidebar-wrapper" data-simplebar="true">
-    <div class="sidebar-header">
-        @if (isLogo)
-        {
-            <div>
-                <img src="@SettingsController.LOGOPATH" class="logo-icon" alt="logo icon">
-            </div>
-        }
-        else
-        {
-            <div>
-                <h4 class="logo-text">@SettingsController.COMPANYNAME</h4>
-            </div>
-        }
-        <div class="toggle-icon ms-auto">
-            <i class='bx bx-first-page'></i>
-        </div>
-    </div>
-    <!--navigation-->
-    <ul class="metismenu" id="menu">
-        <li class="menu-label">Manage</li>
-        <li>
-            <a href="javascript:;">
-                <div class="parent-icon">
-                    <i class='bx bxs-business'></i>
-                </div>
-                <div class="menu-title">Company</div>
-            </a>
-            <ul>
-                <li>
-
-                    <a asp-controller="Company" asp-action="Register" asp-area="SuperAdmin"><i class="bx bx-right-arrow-alt"></i>Register Company</a>
-                </li>
-                <li>
-                    <a asp-controller="Company" asp-action="Index" asp-area="SuperAdmin"><i class="bx bx-right-arrow-alt"></i>Company</a>
-                </li>
-            </ul>
-        </li>
-        <li>
-            <a href="javascript:;" class="has-arrow">
-                <div class="parent-icon">
-                    <i class='bx bx-user'></i>
-                </div>
-                <div class="menu-title">Roles</div>
-            </a>
-            <ul>
-                <li>
-                    <a asp-area="SuperAdmin" asp-controller="Role" asp-action="Create"><i class="bx bx-right-arrow-alt"></i>Add Role</a>
-                </li>
-                <li>
-                    <a asp-area="SuperAdmin" asp-controller="Role" asp-action="Index"><i class="bx bx-right-arrow-alt"></i>Roles</a>
-                </li>
-                <li>
-                    <a class="nav-link " asp-controller="UserRoles" asp-action="Index" asp-area="SuperAdmin"><i class="bx bx-right-arrow-alt"></i>Manage Users</a>
-                </li>
-            </ul>
-        </li>
-
-    </ul>
-    <!--end navigation-->
-</div>*@
-
+﻿<!--MARKETING AREA SIDEBAR-->
 @using ERP.Controllers
 @{
     string path = SettingsController.LOGOPATH;
@@ -78,21 +8,19 @@
         isLogo = true;
     }
 }
-<!--SUPERADMIN AREA SIDEBAR START-->
-<div class="sidebar-wrapper" data-simplebar="true"  ><!--style="background-color:#f1f1f1;" add this command in-line css-->
+
+<!--MARKETING AREA SIDEBAR START-->
+<div class="sidebar-wrapper" data-simplebar="true"  >
     <div class="sidebar-header">
         @if (isLogo)
         {
             <div>
-               @* <img src="@SettingsController.LOGOPATH" class="logo-icon" alt="logo icon">*@
-               @* <img src="~/companylogo/logo.png" class="logo-icon" alt="logo icon">*@
                 <img src="~/assets/images/icons/Srini_Link_logo.png" class="logo-icon" alt="Srini Link">
             </div>
         }
         else
         {
             <div>
-                @*<img src="~/assets/images/icons/Srini_Link_logo.png" class="logo-icon" style="width:5%" alt="Srini Link">*@
                 <h4 class="logo-text">@SettingsController.COMPANYNAME</h4>
             </div>
         }
@@ -102,6 +30,7 @@
     </div>
     <!--Navigation Start-->
     <ul class="metismenu" id="menu">
+
         <!--Administrator Tab Start-->
         <li>
             <a href="javascript:;" class="has-arrow">
@@ -158,6 +87,7 @@
                     </secure-content>
                 </li>
                 <!--Marketing Party End-->
+
 
                 
 
@@ -233,11 +163,11 @@
         </li>
         <!--Visitor Tab End-->
 
-       <!--Marketing Tab Start-->
+        <!--Marketing Tab Start-->
         <li>
             <a href="javascript:;" class="has-arrow">
-                <div class="parent-icon">
-                    <i class="fa fa-line-chart"></i>
+                <div class="parent-icon">  
+                   <i class="fa fa-line-chart"></i>
                 </div>
                 <div class="menu-title">Marketing</div>
             </a>
@@ -253,8 +183,7 @@
         </li>
         <!--Marketing Tab End-->
 
-
     </ul>
     <!--Navigation End-->
 </div>
-<!--SUPERADMIN AREA SIDEBAR END-->
+<!--MARKETING AREA SIDEBAR END-->

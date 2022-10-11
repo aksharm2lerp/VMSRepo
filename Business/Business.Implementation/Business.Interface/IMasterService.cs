@@ -1,4 +1,4 @@
-﻿using Business.Entities;
+using Business.Entities;
 using Business.Entities.Master;
 using Business.Entities.User;
 using Business.Entities.Department;
@@ -11,6 +11,7 @@ using Business.Entities.Designation;
 using Business.Entities.Employee;
 using Business.Entities.Gender;
 using Business.Entities.SecurityOfficer;
+
 
 namespace Business.Interface
 {
@@ -39,5 +40,6 @@ namespace Business.Interface
         PagedDataTable<EmailGroupMaster> GetEmailGroupMaster(int emailGroupID);
         PagedDataTable<SecurityOfficerMaster> GetAllSecurityOfficers();
         PagedDataTable<DesignationGroup> GetDesignationGroupMasterAsync();
+        PagedDataTable<PartyTypeMaster> GetPartyTypeMasterAsync();
     }
 }

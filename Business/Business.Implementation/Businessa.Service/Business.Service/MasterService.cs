@@ -1,4 +1,4 @@
-﻿using Business.Entities;
+using Business.Entities;
 using Business.Entities.Department;
 using Business.Entities.Designation;
 using Business.Entities.Employee;
@@ -368,18 +368,16 @@ namespace Business.Service
             return lst;
         }
 
-        public PagedDataTable<DesignationMaster> GetAllDesignations()
+
+        public PagedDataTable<PartyTypeMaster> GetPartyTypeMasterAsync()
         {
             DataTable table = new DataTable();
             int totalItemCount = 0;
-            PagedDataTable<DesignationMaster> lst = new PagedDataTable<DesignationMaster>();
+            PagedDataTable<PartyTypeMaster> lst = new PagedDataTable<PartyTypeMaster>();
             try
             {
-                SqlParameter[] param = {
-                    new SqlParameter("@PageNo", 1),
-                    new SqlParameter("@PageSize", "0"),
-                };
-                using (DataSet ds = SqlHelper.ExecuteDataset(connection, CommandType.StoredProcedure, "Usp_GetAll_DesignationMaster", param))
+                using (DataSet ds = SqlHelper.ExecuteDataset(connection, CommandType.StoredProcedure, "Usp_GetAll_PartyTypeMaster"))
+
                 {
                     if (ds.Tables.Count > 0)
                     {
@@ -392,7 +390,12 @@ namespace Business.Service
                                 totalItemCount = table.Rows.Count;
                         }
                     }
+
+                    lst = table.ToPagedDataTableList<PartyTypeMaster>
+                       (1, 20, totalItemCount, null, "PartyTypeText", "ASC");
+
                     lst = table.ToPagedDataTableList<DesignationMaster>();
+
                 }
             }
             catch
@@ -406,6 +409,7 @@ namespace Business.Service
             }
             return lst;
         }
+
 
         public PagedDataTable<EmployeeMaster> GetAllEmployees()
         {
@@ -765,5 +769,6 @@ namespace Business.Service
         }
 
         #endregion Single record select
+
     }
 }

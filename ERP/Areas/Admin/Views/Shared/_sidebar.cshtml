@@ -7,6 +7,7 @@
         isLogo = true;
     }
 }
+<!--ADMIN AREA SIDEBAR START-->
 <div class="sidebar-wrapper" data-simplebar="true"  ><!--style="background-color:#f1f1f1;" add this command in-line css-->
     <div class="sidebar-header">
         @if (isLogo)
@@ -28,9 +29,9 @@
             <i class='bx bx-chip'></i>
         </div>
     </div>
-    <!--navigation-->
+    <!--Navigation Start-->
     <ul class="metismenu" id="menu">
-
+        <!--Administrator Tab Start-->
         <li>
             <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon">
@@ -63,12 +64,32 @@
                 </li>
                 <!--Department-->
 
+                <!--Designation-->
+                <li>
+                    <secure-content asp-area="SuperAdmin" asp-controller="Designation" asp-action="Index">
+                        <a asp-area="SuperAdmin" asp-controller="Designation" asp-action="Index"><i class="bx bx-right-arrow-alt"></i>Designation</a>
+                    </secure-content>
+                </li>                
+                <!--Designation-->
+
                 <!--Users-->
                  <li>
                     <secure-content asp-area="Admin" asp-controller="Users" asp-action="Index">
                         <a asp-area="Admin" asp-controller="Users" asp-action="Index"><i class="bx bx-right-arrow-alt"></i>Users</a>
                     </secure-content>
                 </li>
+
+                <!--Users--> 
+
+                <!--Marketing Party Start-->
+                <li>
+                    <secure-content asp-area="SuperAdmin" asp-controller="Party" asp-action="Index">
+                        <a asp-area="SuperAdmin" asp-controller="PartyType" asp-action="Index"><i class="bx bx-right-arrow-alt"></i>Party Type</a>
+                    </secure-content>
+                </li>
+                <!--Marketing Party End-->
+                 
+
                 <!--Users-->
                 <!--EmployeeMaster-->
                 <li>
@@ -84,6 +105,7 @@
                     </secure-content>
                 </li>
                 <!--SecurityOfficer-->
+
                 <!--User Permissions--> 
                 <li>
                     <secure-content asp-area="Admin" asp-controller="" asp-action="">
@@ -110,7 +132,9 @@
                
             </ul>
         </li>
+        <!--Administrator Tab End-->
 
+        <!--Visitor Tab Start-->
         <li>
             <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon">
@@ -152,9 +176,28 @@
                 <!--Direct visitor entry-->
             </ul>
         </li>
+        <!--Visitor Tab End-->
 
-
-
+        <!--Marketing Tab Start-->
+        <li>
+            <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon">
+                    <i class="fa fa-line-chart"></i>
+                </div>
+                <div class="menu-title">Marketing</div>
+            </a>
+            <ul>
+                <!--Feedback Start-->
+                <li>
+                    <secure-content asp-area="Marketing" asp-controller="Feedback" asp-action="Index">
+                        <a asp-area="Marketing" asp-controller="Feedback" asp-action="Index"><i class="bx bx-right-arrow-alt"></i>Feedback</a>
+                    </secure-content>
+                </li>
+                <!--Feedback End-->     
+            </ul>
+        </li>
+        <!--Marketing Tab End-->
     </ul>
-    <!--end navigation-->
+    <!--Navigation End-->
 </div>
+<!--ADMIN AREA SIDEBAR END-->
