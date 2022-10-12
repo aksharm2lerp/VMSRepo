@@ -8,12 +8,10 @@ using Business.Entities.SecurityOfficer;
 using Business.Entities.User;
 using Business.Interface;
 using Business.SQL;
-using MailKit.Search;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Data;
 using System.Data.SqlClient;
-using System.Globalization;
 
 namespace Business.Service
 {
@@ -315,22 +313,6 @@ namespace Business.Service
             return lst;
         }
 
-        #region Multiple record select
-        public PagedDataTable<Department> GetAllDepartments()
-        {
-            DataTable table = new DataTable();
-            int totalItemCount = 0;
-            PagedDataTable<Department> lst = new PagedDataTable<Department>();
-            try
-            {
-                SqlParameter[] param = {
-                        new SqlParameter("@PageNo",1)
-                        ,new SqlParameter("@PageSize","0")
-                        ,new SqlParameter("@SearchString","")
-                        ,new SqlParameter("@OrderBy","")
-                        ,new SqlParameter("@SortBy","")
-                        };
-                using (DataSet ds = SqlHelper.ExecuteDataset(connection, CommandType.StoredProcedure, "Usp_GetAll_DepartmentMaster", param))
         public PagedDataTable<DesignationGroup> GetDesignationGroupMasterAsync()
         {
             DataTable table = new DataTable();
@@ -351,7 +333,6 @@ namespace Business.Service
                                 totalItemCount = table.Rows.Count;
                         }
                     }
-                    lst = table.ToPagedDataTableList<Department>();
                     lst = table.ToPagedDataTableList<DesignationGroup>
                        (1, 20, totalItemCount, null, "DesignationGroupText", "ASC");
                 }
@@ -368,6 +349,93 @@ namespace Business.Service
             return lst;
         }
 
+        #region Multiple record select
+        public PagedDataTable<Department> GetAllDepartments()
+        {
+            DataTable table = new DataTable();
+            int totalItemCount = 0;
+            PagedDataTable<Department> lst = new PagedDataTable<Department>();
+            try
+            {
+                SqlParameter[] param = {
+                        new SqlParameter("@PageNo",1)
+                        ,new SqlParameter("@PageSize","0")
+                        ,new SqlParameter("@SearchString","")
+                        ,new SqlParameter("@OrderBy","")
+                        ,new SqlParameter("@SortBy","")
+                        };
+                using (DataSet ds = SqlHelper.ExecuteDataset(connection, CommandType.StoredProcedure, "Usp_GetAll_DepartmentMaster", param))
+                {
+                    if (ds.Tables.Count > 0)
+                    {
+                        table = ds.Tables[0];
+                        if (table.Rows.Count > 0)
+                        {
+                            if (table.ContainColumn("TotalCount"))
+                                totalItemCount = Convert.ToInt32(table.Rows[0]["TotalCount"]);
+                            else
+                                totalItemCount = table.Rows.Count;
+                        }
+                    }
+
+                    lst = table.ToPagedDataTableList<Department>
+                       (1, 20, totalItemCount, null, "DepartmentID", "ASC");
+
+                    lst = table.ToPagedDataTableList<Department>();
+
+                }
+
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                if (table != null)
+                    table.Dispose();
+            }
+            return lst;
+        }
+
+        public PagedDataTable<DesignationMaster> GetAllDesignations()
+        {
+            DataTable table = new DataTable();
+            int totalItemCount = 0;
+            PagedDataTable<DesignationMaster> lst = new PagedDataTable<DesignationMaster>();
+            try
+            {
+                SqlParameter[] param = {
+                    new SqlParameter("@PageNo", 1),
+                    new SqlParameter("@PageSize", "0"),
+                };
+                using (DataSet ds = SqlHelper.ExecuteDataset(connection, CommandType.StoredProcedure, "Usp_GetAll_DesignationMaster", param))
+                {
+                    if (ds.Tables.Count > 0)
+                    {
+                        table = ds.Tables[0];
+                        if (table.Rows.Count > 0)
+                        {
+                            if (table.ContainColumn("TotalCount"))
+                                totalItemCount = Convert.ToInt32(table.Rows[0]["TotalCount"]);
+                            else
+                                totalItemCount = table.Rows.Count;
+                        }
+                    }
+                    lst = table.ToPagedDataTableList<DesignationMaster>();
+                }
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                if (table != null)
+                    table.Dispose();
+            }
+            return lst;
+        }
 
         public PagedDataTable<PartyTypeMaster> GetPartyTypeMasterAsync()
         {
@@ -394,7 +462,7 @@ namespace Business.Service
                     lst = table.ToPagedDataTableList<PartyTypeMaster>
                        (1, 20, totalItemCount, null, "PartyTypeText", "ASC");
 
-                    lst = table.ToPagedDataTableList<DesignationMaster>();
+                    lst = table.ToPagedDataTableList<PartyTypeMaster>();
 
                 }
             }

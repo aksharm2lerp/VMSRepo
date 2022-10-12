@@ -73,7 +73,8 @@ namespace Business.Service.Marketing
             {
                 SqlParameter[] param = {
                 new SqlParameter("@MarketingFeedbackID", marketingFeedback.MarketingFeedbackID)
-                ,new SqlParameter("@FeedbackDate", marketingFeedback.FeedbackDate)
+                ,new SqlParameter("@FeedbackDate", DateTime.Now)
+                ,new SqlParameter("@PartyName", marketingFeedback.PartyName)
                 ,new SqlParameter("@PartyTypeID", marketingFeedback.PartyTypeID)
                 ,new SqlParameter("@Email", marketingFeedback.Email)
                 ,new SqlParameter("@MobileNo", marketingFeedback.MobileNo)
@@ -92,7 +93,7 @@ namespace Business.Service.Marketing
                 throw ex;
             }
         }
-        /*Register Designation end*/
+        
 
         public async Task<MarketingFeedback> GetMarketingFeedbackAsync(string MarketingFeedbackID)
         {

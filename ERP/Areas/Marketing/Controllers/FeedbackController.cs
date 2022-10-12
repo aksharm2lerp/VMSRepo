@@ -67,7 +67,7 @@ namespace ERP.Areas.Marketing.Controllers
                     .Sortable(true)
                     .SetWidth(20);
 
-                c.Add(o => o.PartyTypeID)
+                c.Add(o => o.PartyTypeText)
                     .Titled("Party Type")
                     .Sortable(true)
                     .SetWidth(50);
@@ -99,7 +99,7 @@ namespace ERP.Areas.Marketing.Controllers
                     .Sanitized(false)
                     .SetWidth(60)
                     .Css("hidden-xs") //hide on phones
-                    .RenderValueAs(o => $"<a class='btn' href='Feedback/Edit/{o.MarketingFeedbackID}' ><i class='bx bx-edit'></i></a>");
+                    .RenderValueAs(o => $"<a class='btn' href='Feedback/Create/{o.MarketingFeedbackID}' ><i class='bx bx-edit'></i></a>");
 
 
             };
@@ -128,16 +128,24 @@ namespace ERP.Areas.Marketing.Controllers
 
         /*Feedback Create Page Start*/
 
-        public IActionResult Create()
+        public IActionResult Create(int id)
+
         {
-            var model = new MarketingFeedback();
-            model.CreatedOrModifiedBy = USERID;
+            if(id > 0)
+            {
+                var PartyTypeTextList = _masterService.GetPartyTypeMasterAsync();
+                ViewData["PartyTypeText"] = new SelectList(PartyTypeTextList, "PartyTypeID", "PartyTypeText");
+                MarketingFeedback model = _marketingFeedbackService.GetMarketingFeedbackAsync(id.ToString()).Result;
+                model.CreatedOrModifiedBy = USERID;
+                /*ViewData["PartyTypeText"] = model.PartyTypeText;*/
+                return View(model);
+            }
 
             var PartyTypeList = _masterService.GetPartyTypeMasterAsync();
             ViewData["PartyTypeText"] = new SelectList(PartyTypeList, "PartyTypeID", "PartyTypeText");
 
 
-            return View("Create", model);
+            return View("Create");
         }
 
         /*Feedback Create Page End*/
@@ -167,15 +175,14 @@ namespace ERP.Areas.Marketing.Controllers
 
         
 
-        public IActionResult Edit(int id)
+/*        public IActionResult Edit(int id)
         {
-            MarketingFeedback model = _marketingFeedbackService.GetMarketingFeedbackAsync(id.ToString()).Result;
-            model.CreatedOrModifiedBy = USERID;
+
             
             var PartyTypeList = _masterService.GetPartyTypeMasterAsync();
             ViewData["PartyTypeText"] = new SelectList(PartyTypeList, "PartyTypeID", "PartyTypeText");
 
             return View("Create", model);
-        }
+        }*/
     }
 }

@@ -15,6 +15,7 @@ namespace Business.Entities.Marketing.Feedback
 
         [Required(ErrorMessage = "Please Select the Party Type")]
         public int PartyTypeID { get; set; }
+        public string PartyTypeText { get; set; }
 
         [Required(ErrorMessage = "Please Enter the Party Email ID")]
         public string Email { get; set; }

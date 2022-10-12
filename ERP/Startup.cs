@@ -3,6 +3,10 @@ using AspNetCoreHero.ToastNotification.Extensions;
 using Business.Entities;
 using Business.Interface;
 using Business.Service;
+using Business.Interface.Marketing;
+using Business.Interface.IPartyType;
+using Business.Service.Marketing;
+using Business.Service.PartyTypeService;
 using ERP.Helpers;
 using ERP.Permission;
 using GridMvc;
@@ -38,8 +42,12 @@ namespace ERP
             services.AddSingleton<IAuthorizationPolicyProvider, PermissionPolicyProvider>();
             services.AddScoped<IAuthorizationHandler, PermissionAuthorizationHandler>();
             services.AddScoped<IDepartmentService, DepartmentService>();
+            services.AddScoped<IDepartmentGroupService, DepartmentGroupService>();
+            services.AddScoped<IDesignationService, DesignationService>();
             services.AddScoped<IEmployeeService, EmployeeService>();
             services.AddScoped<ISecurityOfficerService, SecurityOfficerService>();
+            services.AddScoped<IMarketingFeedbackService, MarketingFeedbackService>();
+            services.AddScoped<IPartyTypeService, PartyTypeService>();
             services.AddIdentity<UserMasterMetadata, RoleMasterMetadata>()
                 .AddDefaultTokenProviders();
             services.Configure<IdentityOptions>(options =>

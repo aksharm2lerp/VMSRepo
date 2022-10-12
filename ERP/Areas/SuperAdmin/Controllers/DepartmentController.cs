@@ -209,7 +209,7 @@ namespace ERP.Areas.SuperAdmin.Controllers
         {
             departmet.CreatedOrModifiedBy = USERID;  
             
-            int DepartmentID = _department.CreateOrUpdateDepartmentAsync(departmet).Result;
+            var DepartmentID = await _department.CreateOrUpdateDepartmentAsync(departmet);
             if (DepartmentID > 0)
             {
                 departmet.DepartmentID = DepartmentID;
